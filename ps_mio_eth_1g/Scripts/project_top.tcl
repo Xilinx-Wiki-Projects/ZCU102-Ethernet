@@ -14,13 +14,13 @@
 
 
 # Set the name of the project:
-set project_name <PROJECT_NAME>
+set project_name ps_mio_eth_1g
 
 # Set the project device:
 set device xczu9eg-ffvb1156-2-e
 
 #Set the path to the constraints file:
-set impl_const ../Hardware/constraints/${project_name}.xdc
+set impl_const ../Hardware/constraints/*.xdc
 
 # If using a UI layout, uncomment this line:
 #set ui_name layout.ui
@@ -32,8 +32,8 @@ set proj_dir ../Hardware/${project_name}_hw
 
 create_project -name ${project_name} -force -dir ${proj_dir} -part ${device}
 
-# Source the BD file, BD naming convention is <PROJECT_NAME>_bd.tcl
-source ${project_name}_bd.tcl
+# Source the BD file, BD naming convention is project_bd.tcl
+source project_bd.tcl
 
 add_files -fileset constrs_1 -norecurse ./${impl_const}
 set_property used_in_synthesis true [get_files ./${impl_const}]
