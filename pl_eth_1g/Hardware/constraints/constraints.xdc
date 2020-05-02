@@ -1,5 +1,18 @@
+# Copyright 2020 Xilinx Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-#sfp0 
+#sfp0
 set_property PACKAGE_PIN A12 [get_ports sfp_tx_dis]
 set_property IOSTANDARD LVCMOS25 [get_ports sfp_tx_dis]
 set_property PACKAGE_PIN E4 [get_ports s*_txp]
@@ -7,7 +20,7 @@ set_property PACKAGE_PIN D2 [get_ports s*_rxp]
 set_property PACKAGE_PIN E3 [get_ports sfp_txn]
 set_property PACKAGE_PIN D1 [get_ports sfp_rxn]
 
-# FMC HPC0 txp 
+# FMC HPC0 txp
 #FMC_HPC0_DP0_C2M_P -> g4
 #FMC_HPC0_DP1_C2M_P -> h6
 #FMC_HPC0_DP2_C2M_P -> f6
@@ -17,7 +30,7 @@ set_property PACKAGE_PIN D1 [get_ports sfp_rxn]
 #FMC_HPC0_DP6_C2M_P -> r4
 #FMC_HPC0_DP7_C2M_P -> n4
 
-#USER_MGT_SI570_CLOCK2_C_P 
+#USER_MGT_SI570_CLOCK2_C_P
 set_property PACKAGE_PIN C8      [get_ports mgt_clk_clk_p]
 # User SMA MGT Clock
 #set_property PACKAGE_PIN N27     [get_ports mgt_clk_clk_p]
