@@ -1,0 +1,34 @@
+From cc318a5fbbecbd087b9a0f73d615970798768d9c Mon Sep 17 00:00:00 2001
+From: Harini Katakam <harini.katakam@xilinx.com>
+Date: Mon, 23 Sep 2019 22:56:01 +0530
+Subject: [LINUX PATCH 2/2] net: macb: Handle phy reset for PCS PMA IP
+
+Call phy reset (conditional on the flag the phy framework checks)
+in macb_open and if the reset succeeds, re-initialize the phy.
+This is required because of runtime clock handling.
+
+Signed-off-by: Harini Katakam <harini.katakam@xilinx.com>
+---
+ drivers/net/ethernet/cadence/macb_main.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/drivers/net/ethernet/cadence/macb_main.c b/drivers/net/ethernet/cadence/macb_main.c
+index 401a6c5..f416d95 100644
+--- a/drivers/net/ethernet/cadence/macb_main.c
++++ b/drivers/net/ethernet/cadence/macb_main.c
+@@ -2592,6 +2592,12 @@ static int macb_open(struct net_device *dev)
+ 	bp->macbgem_ops.mog_init_rings(bp);
+ 	macb_init_hw(bp);
+ 
++	/* Since this driver uses runtime handling of clocks, initiate a phy
++	 * reset if the attached phy requires it. Check return to see if phy
++	 * was reset and then do a phy initialization.
++	 */
++	if (phy_reset_after_clk_enable(dev->phydev) == 1)
++		phy_init_hw(dev->phydev);
+ 	/* schedule a link state check */
+ 	phy_start(dev->phydev);
+ 
+-- 
+2.7.4
+

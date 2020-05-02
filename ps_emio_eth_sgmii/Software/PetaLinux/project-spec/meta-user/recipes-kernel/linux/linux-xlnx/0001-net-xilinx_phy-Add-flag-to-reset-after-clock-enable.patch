@@ -1,0 +1,30 @@
+From 711952f39f5732197fabe5e7c3c1ae3e30350f88 Mon Sep 17 00:00:00 2001
+From: Harini Katakam <harini.katakam@xilinx.com>
+Date: Mon, 23 Sep 2019 22:36:33 +0530
+Subject: [LINUX PATCH 1/2] net: xilinx_phy: Add flag to reset after clock
+ enable
+
+Enable flag to require phy reset after reference clock is enabled.
+The MAC driver using this phy can call phy_reset_after_clock_enable
+and the phy framework will check this flag before allowing the reset.
+
+Signed-off-by: Harini Katakam <harini.katakam@xilinx.com>
+---
+ drivers/net/phy/xilinx_phy.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/net/phy/xilinx_phy.c b/drivers/net/phy/xilinx_phy.c
+index 2410fa3..16aad53 100644
+--- a/drivers/net/phy/xilinx_phy.c
++++ b/drivers/net/phy/xilinx_phy.c
+@@ -139,6 +139,7 @@ static struct phy_driver xilinx_drivers[] = {
+ 		.phy_id = XILINX_PHY_ID,
+ 		.phy_id_mask = XILINX_PHY_ID_MASK,
+ 		.name = "Xilinx PCS/PMA PHY",
++		.flags = PHY_RST_AFTER_CLK_EN,
+ 		.features = PHY_GBIT_FEATURES,
+ 		.config_init = &xilinxphy_config_init,
+ 		.config_aneg = &genphy_config_aneg,
+-- 
+2.7.4
+
