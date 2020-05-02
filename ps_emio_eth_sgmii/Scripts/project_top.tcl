@@ -33,9 +33,9 @@ create_project -name ${project_name} -force -dir ${proj_dir} -part ${device}
 source project_bd.tcl
 
 #Set the path to the constraints file:
-set impl_const ../Hardware/constraints/*.xdc
+set impl_const ../Hardware/constraints/constraints.xdc
 
-if [file exists impl_const] {
+if [file exists ${impl_const}] {
     add_files -fileset constrs_1 -norecurse ./${impl_const}
     set_property used_in_synthesis true [get_files ./${impl_const}]
 }
