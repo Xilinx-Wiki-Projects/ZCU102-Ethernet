@@ -1,29 +1,37 @@
-# Wiki Project Template Repository
-This repository contains the template for creating a repository for the Xilinx Wiki.
+# ZCU102 PS and PL based 1G/10G Ethernet
+This repository contains ZCU102 design files for PS and PL based 1G/10G Ethernet. An overview can be found [HERE]().
 
-This top-level README serves as a high-level entry point to the rest of your repository.
+There are 6 available designs:
 
-**IMPORTANT:** Follow the guidelines laid out in this README.md to create your own, using the same layout and headings.
+- **pl_eth_1g** - PL 1000BASE-X design utilizing the AXI Ethernet 1G/2.5G Subsystem.
 
-A repository may be made up of one or more of the `template_project` directories, each containing their own design.
+- **pl_eth_sgmii** - PL SGMII design utilizing the AXI Ethernet 1G/2.5G Subsystem.
 
+- **pl_eth_10g** - PL 10GBASE-R design utilizing the AXI Ethernet 10G/25G Subsystem.
+
+- **ps_emio_eth_1g** - PS 1000BASE-X design utilizing the GEM over EMIO to a 1G/2.5G Ethernet PCS/PMA or SGMII IP.
+
+- **ps_emio_eth_1g** - PS SGMII design utilizing the GEM over EMIO to a 1G/2.5G Ethernet PCS/PMA or SGMII IP.
+
+- **ps_mio_eth_1g** - PS 10/100/1000BASE-T design utilizing the GEM over MIO to the TI DP83867 PHY onboard the ZCU102.
 ---
 ## **What to Expect**
-The `template_project` contains the following structure:
+Each design directory contains the following general structure:
 
 ```
 <design>
 ├── Hardware
 │   └── constraints
-│       └── constraints.xdc
+│       └── <design>.xdc
 ├── README.md
 ├── Scripts
 │   ├── <design>.ui
 │   ├── <design>_bd.tcl
-│   └── project_top.tcl
+│   └── <design>_top.tcl
 └── Software
-    ├── PetaLinux
-    └── SDK
+    ├── SDK
+    └── PetaLinux
+
 ````
 Each design's `README.md` will provide:
 
@@ -33,9 +41,10 @@ Each design's `README.md` will provide:
 
 - **Build Instructions** - Instructions on how to re-build the designs
 
-- **Validation** - List of exact validation hardware, and results of validation tests run against the design
+- **Validation** - Setup and results of validation tests run against the design
 
 - **Known Issues** - Current known issues with the design and/or workarounds for these issues.
+
 ---
 ## **Troubleshooting / Assistance**
 If you find you are having difficulty bringing up one of the designs, or need some additional assistance, please reach out on the [Xilinx Community Forums](https://forums.xilinx.com).
