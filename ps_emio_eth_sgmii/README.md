@@ -41,7 +41,37 @@ Once packaged, the `BOOT.bin` and `image.ub` files (in the `PetaLinux/images/lin
 ---
 
 ## **Validation**
+### **U-Boot:**
+NOTE: U-Boot validation results are not available
 
+### **Kernel:**
+```
+root@plnx:~# ethtool -s eth0 speed 1000 duplex full autoneg off
+root@plnx:~# [   43.650142] macb ff0b0000.ethernet eth0: unable to generate target frequency: 125000000 Hz
+[   43.658409] macb ff0b0000.ethernet eth0: link up (1000/Full)
+
+root@plnx:~# udhcpc -i eth0
+udhcpc: started, v1.29.2
+udhcpc: sending discover
+udhcpc: sending select for 123.234.10.18
+udhcpc: lease of 123.234.10.18 obtained, lease time 600
+root@plnx:~# ping -I eth0 123.234.10.1 -c 9
+PING 123.234.10.1 (123.234.10.1): 56 data bytes
+64 bytes from 123.234.10.1: seq=0 ttl=64 time=0.255 ms
+64 bytes from 123.234.10.1: seq=1 ttl=64 time=0.134 ms
+64 bytes from 123.234.10.1: seq=2 ttl=64 time=0.140 ms
+64 bytes from 123.234.10.1: seq=3 ttl=64 time=0.185 ms
+64 bytes from 123.234.10.1: seq=4 ttl=64 time=0.133 ms
+64 bytes from 123.234.10.1: seq=5 ttl=64 time=0.213 ms
+64 bytes from 123.234.10.1: seq=6 ttl=64 time=0.126 ms
+64 bytes from 123.234.10.1: seq=7 ttl=64 time=0.146 ms
+64 bytes from 123.234.10.1: seq=8 ttl=64 time=0.128 ms
+
+--- 123.234.10.1 ping statistics ---
+9 packets transmitted, 9 packets received, 0% packet loss
+round-trip min/avg/max = 0.126/0.162/0.255 ms
+root@plnx:~#
+```
 ---
 
 ## **Known Issues**
