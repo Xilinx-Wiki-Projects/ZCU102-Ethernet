@@ -1,24 +1,15 @@
-# Example Design Template
+# PS 1000BASE-X via EMIO
 
 ## **Design Summary**
 
-This project is a template for creating your own example design repositories. A repository might be comprised of one or more of these projects. This is also a good section to describe where certain signals are routed at a high-level. For example: "The 1G AXI Ethernet signal is routed to the ZCU102 SFP cage on SFP0".
-
-NOTE: the build instructions are universal if you use this template, so you don't have to edit that section.
+This project utilizes PS-GEM over EMIO to a 1G/2.5G Ethernet PCS/PMA or SGMII core. The core is configured for 1000BASE-X operation. This has been routed to the SFP cage on SFP0 for use on a ZCU102 board. System is configured to use the ZCU102 si570 at 156.25MHz.
 
 ---
 
 ## **Required Hardware**
 
-In this section, describe the generalized required hardware to run the example design. This includes:
-- Boards
-- Cables
-- Expansion Cards
-- Network Adapters
-- SFP Modules
-- Etc
-
-Description of the exact HW configuration used for testing will go in the **Validation** section.
+- ZCU102
+- SFP module supporting 1000BASE-X
 
 ---
 
@@ -51,31 +42,15 @@ Once packaged, the `BOOT.bin` and `image.ub` files (in the `plnx/images/linux` d
 
 ## **Validation**
 
-Here you will place example validation that you've done that the customer can repeat, along with the exact hardware used for validation. This improves confidence in the design, and gives a good test for the customer to run initially. Shown below are U-Boot and Kernel examples:
-
-### **Validation Hardware:**
-- Board
-- Adapters
-- Cables
-- Etc
-
-### **U-Boot:**
-```
-ZynqMP> example_command
-example_command success
-ZynqMP>
-```
-
-### **Kernel:**
-```
-root@plnx:~# example_command
-example_command success
-root@plnx:~#
-```
-
 ---
 
 ## **Known Issues**
-In this section, list any known issues with the design, or any warning messages that might appear which can be safely ignored by the customer.
+
+On boot, the following error will be seen:
+
+`[    6.929736] macb ff0b0000.ethernet eth0: unable to generate target frequency: 125000000 Hz
+`
+
+This can be safely ignored.
 
 ---
