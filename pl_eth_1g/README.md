@@ -5,14 +5,14 @@ This project utilizes AXI 1G/2.5G Ethernet Subsystem configured for 1000BASE-X. 
 
 ---
 
-## **Required Hardware** 
+## **Required Hardware**
 
 - ZCU102
 - SFP module supporting 1000BASE-X
 
 ---
 
-## **Build Instructions** 
+## **Build Instructions**
 
 ### **Vivado:**
 
@@ -24,21 +24,18 @@ The Vivado project will be built in the `Hardware` directory.
 
 ### **PetaLinux**:
 
-Enter the `Software` directory. From the command line run the following:
-
-`petalinux-create -t project -s *.bsp`
-
-The PetaLinux project will be created under the `plnx` directory. To reduce file size, the project is shipped pre-configured, but un-built.
-
-To build the PetaLinux project, run the following from the `plnx` directory:
+Enter the `Software/PetaLinux/` directory. From the command line run the following:
 
 `petalinux-build`
 
-Once complete, the built images can be found in the `plnx/images/linux/` directory. To package these images for SD boot, run the following from the `plnx` directory:
+The PetaLinux project will be rebuilt using the configurations in the PetaLinux directory. To reduce repo size, the project is shipped pre-configured, but un-built.
+
+Once the build is complete, the built images can be found in the `PetaLinux/images/linux/`
+directory. To package these images for SD boot, run the following from the `PetaLinux` directory:
 
 `petalinux-package --boot --fsbl images/linux/zynqmp_fsbl.elf --fpga images/linux/*.bit --pmufw images/linux/pmufw.elf --u-boot --force`
 
-Once packaged, the `BOOT.bin` and `image.ub` files (in the `plnx/images/linux` directory) can be copied to an SD card, and used to boot.
+Once packaged, the `BOOT.bin` and `image.ub` files (in the `PetaLinux/images/linux` directory) can be copied to an SD card, and used to boot.
 
 ---
 
