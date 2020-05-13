@@ -6,14 +6,14 @@ This project utilizes PS-GEM over EMIO to a 1G/2.5G Ethernet PCS/PMA or SGMII co
 
 ---
 
-## **Required Hardware** 
+## **Required Hardware**
 
 - ZCU102
 - SFP module supporting SGMII
 
 ---
 
-## **Build Instructions** 
+## **Build Instructions**
 
 ### **Vivado:**
 
@@ -25,17 +25,14 @@ The Vivado project will be built in the `Hardware` directory.
 
 ### **PetaLinux**:
 
-Enter the `Software` directory. From the command line run the following:
-
-`petalinux-create -t project -s *.bsp`
-
-The PetaLinux project will be created under the `plnx` directory. To reduce file size, the project is shipped pre-configured, but un-built.
-
-To build the PetaLinux project, run the following from the `plnx` directory:
+Enter the `Software/PetaLinux/` directory. From the command line run the following:
 
 `petalinux-build`
 
-Once complete, the built images can be found in the `plnx/images/linux/` directory. To package these images for SD boot, run the following from the `plnx` directory:
+The PetaLinux project will be rebuilt using the configurations in the PetaLinux directory. To reduce repo size, the project is shipped pre-configured, but un-built.
+
+Once the build is complete, the built images can be found in the `PetaLinux/images/linux/`
+directory. To package these images for SD boot, run the following from the `PetaLinux` directory:
 
 `petalinux-package --boot --fsbl images/linux/zynqmp_fsbl.elf --fpga images/linux/*.bit --pmufw images/linux/pmufw.elf --u-boot --force`
 
@@ -54,6 +51,6 @@ On boot, the following error will be seen:
 `[    6.929736] macb ff0b0000.ethernet eth0: unable to generate target frequency: 125000000 Hz
 `
 
-This can be safely ignored. 
+This can be safely ignored.
 
 ---
