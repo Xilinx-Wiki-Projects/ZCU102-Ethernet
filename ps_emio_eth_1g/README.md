@@ -40,7 +40,8 @@ Enter the `Software/PetaLinux/` directory. From the command line run the followi
 
 The PetaLinux project will be rebuilt using the configurations in the PetaLinux directory. To reduce repo size, the project is shipped pre-configured, but un-built.
 
-Once the build is complete, the built images can be found in the `plnx/images/linux/` directory. To package these images for SD boot, run the following from the `plnx` directory:
+Once the build is complete, the built images can be found in the `PetaLinux/images/linux/`
+directory. To package these images for SD boot, run the following from the `PetaLinux` directory:
 
 `petalinux-package --boot --fsbl images/linux/zynqmp_fsbl.elf --fpga images/linux/*.bit --pmufw images/linux/pmufw.elf --u-boot --force`
 
