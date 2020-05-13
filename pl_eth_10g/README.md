@@ -46,6 +46,85 @@ Once packaged, the `BOOT.bin` and `image.ub` files (in the `PetaLinux/images/lin
 
 ## **Validation**
 
+### **U-Boot:**
+**NOTE:** U-Boot validation for 1G interface only - 10G drivers currently only exist for Kernel.
+```
+ZynqMP> dhcp
+BOOTP broadcast 1
+BOOTP broadcast 2
+BOOTP broadcast 3
+DHCP client bound to address 123.234.10.31 (1047 ms)
+ZynqMP> ping 123.234.10.1
+Using ethernet@ff0e0000 device
+host 123.234.10.1 is alive
+ZynqMP>
+```
+### **Kernel:**
+**NOTE:** The interfaces are assigned as follows:
+ - `eth0` -> 1G
+ - `eth1` -> 10G
+```
+root@plnx:~# ifconfig
+eth0      Link encap:Ethernet  HWaddr DE:AD:BE:EF:00:00
+          inet addr:123.234.10.18  Bcast:123.234.10.255  Mask:255.255.255.0
+          inet6 addr: fe80::dcad:beff:feef:0/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:53 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:113 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:4485 (4.3 KiB)  TX bytes:24804 (24.2 KiB)
+          Interrupt:30
+
+eth1      Link encap:Ethernet  HWaddr DE:AD:BE:EF:00:01
+          inet addr:123.234.10.19  Bcast:123.234.10.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING  MTU:1500  Metric:1
+          RX packets:129 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:16124 (15.7 KiB)  TX bytes:2728 (2.6 KiB)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+root@plnx:~# ping -I eth0 123.234.10.1 -c 9
+PING 123.234.10.1 (123.234.10.1): 56 data bytes
+64 bytes from 123.234.10.1: seq=0 ttl=64 time=0.252 ms
+64 bytes from 123.234.10.1: seq=1 ttl=64 time=0.177 ms
+64 bytes from 123.234.10.1: seq=2 ttl=64 time=0.157 ms
+64 bytes from 123.234.10.1: seq=3 ttl=64 time=0.171 ms
+64 bytes from 123.234.10.1: seq=4 ttl=64 time=0.166 ms
+64 bytes from 123.234.10.1: seq=5 ttl=64 time=0.154 ms
+64 bytes from 123.234.10.1: seq=6 ttl=64 time=0.164 ms
+64 bytes from 123.234.10.1: seq=7 ttl=64 time=0.163 ms
+64 bytes from 123.234.10.1: seq=8 ttl=64 time=0.176 ms
+
+--- 123.234.10.1 ping statistics ---
+9 packets transmitted, 9 packets received, 0% packet loss
+round-trip min/avg/max = 0.154/0.175/0.252 ms
+root@plnx:~# ping -I eth1 123.234.10.1 -c 9
+PING 123.234.10.1 (123.234.10.1): 56 data bytes
+64 bytes from 123.234.10.1: seq=0 ttl=64 time=0.208 ms
+64 bytes from 123.234.10.1: seq=1 ttl=64 time=0.183 ms
+64 bytes from 123.234.10.1: seq=2 ttl=64 time=0.155 ms
+64 bytes from 123.234.10.1: seq=3 ttl=64 time=0.088 ms
+64 bytes from 123.234.10.1: seq=4 ttl=64 time=0.148 ms
+64 bytes from 123.234.10.1: seq=5 ttl=64 time=0.149 ms
+64 bytes from 123.234.10.1: seq=6 ttl=64 time=0.180 ms
+64 bytes from 123.234.10.1: seq=7 ttl=64 time=0.177 ms
+64 bytes from 123.234.10.1: seq=8 ttl=64 time=0.195 ms
+
+--- 123.234.10.1 ping statistics ---
+9 packets transmitted, 9 packets received, 0% packet loss
+round-trip min/avg/max = 0.088/0.164/0.208 ms
+root@plnx:~#
+```
+
 ---
 
 ## **Known Issues**
