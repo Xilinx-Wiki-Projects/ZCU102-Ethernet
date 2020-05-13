@@ -1,19 +1,6 @@
-# Copyright 2020 Xilinx Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 
 ################################################################
-# This is a generated script based on design: pl_eth_1g
+# This is a generated script based on design: pl_eth_sgmii
 #
 # Though there are limitations about the generated script,
 # the main purpose of this utility is to make learning
@@ -48,7 +35,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 ################################################################
 
 # To test this script, run the following commands from Vivado Tcl console:
-# source pl_eth_1g_script.tcl
+# source pl_eth_sgmii_script.tcl
 
 # If there is no project opened, this script will create a
 # project, but make sure you do not have an existing project
@@ -62,7 +49,7 @@ if { $list_projs eq "" } {
 
 # CHANGE DESIGN NAME HERE
 variable design_name
-set design_name pl_eth_1g
+set design_name pl_eth_sgmii
 
 # If you do not already have an existing IP Integrator design open,
 # you can create a design using the following command:
@@ -101,7 +88,7 @@ if { ${design_name} eq "" } {
    set errMsg "Design <$design_name> already exists in your project, please set the variable <design_name> to another value."
    set nRet 1
 } elseif { [get_files -quiet ${design_name}.bd] ne "" } {
-   # USE CASES:
+   # USE CASES: 
    #    6) Current opened design, has components, but diff names, design_name exists in project.
    #    7) No opened design, design_name exists in project.
 
@@ -122,11 +109,6 @@ if { ${design_name} eq "" } {
 
 }
 
-  # Add USER_COMMENTS on $design_name
-  set_property USER_COMMENTS.comment_0 "PL ETHERNET 1000BASE-X DESIGN" [get_bd_designs $design_name]
-  set_property USER_COMMENTS.comment_1 "PL ETHERNET SGMII DESIGN" [get_bd_designs $design_name]
-  set_property USER_COMMENTS.comment_2 "PL ETHERNET SGMII DESIGN" [get_bd_designs $design_name]
-
 common::send_msg_id "BD_TCL-005" "INFO" "Currently the variable <design_name> is equal to \"$design_name\"."
 
 if { $nRet != 0 } {
@@ -140,7 +122,7 @@ set bCheckIPsPassed 1
 ##################################################################
 set bCheckIPs 1
 if { $bCheckIPs == 1 } {
-   set list_check_ips "\
+   set list_check_ips "\ 
 xilinx.com:ip:axi_ethernet:7.1\
 xilinx.com:ip:axi_dma:7.1\
 xilinx.com:ip:clk_wiz:6.0\
@@ -482,7 +464,7 @@ proc create_hier_cell_zynq_ps { parentCell nameHier } {
    CONFIG.PSU_DDR_RAM_HIGHADDR {0xFFFFFFFF} \
    CONFIG.PSU_DDR_RAM_HIGHADDR_OFFSET {0x800000000} \
    CONFIG.PSU_DDR_RAM_LOWADDR_OFFSET {0x80000000} \
-   CONFIG.PSU_DYNAMIC_DDR_CONFIG_EN {1} \
+   CONFIG.PSU_DYNAMIC_DDR_CONFIG_EN {0} \
    CONFIG.PSU_IMPORT_BOARD_PRESET {} \
    CONFIG.PSU_MIO_0_DRIVE_STRENGTH {12} \
    CONFIG.PSU_MIO_0_INPUT_TYPE {schmitt} \
@@ -1393,8 +1375,8 @@ proc create_hier_cell_zynq_ps { parentCell nameHier } {
    CONFIG.PSU__GPIO1_MIO__PERIPHERAL__ENABLE {0} \
    CONFIG.PSU__GPIO2_MIO__PERIPHERAL__ENABLE {0} \
    CONFIG.PSU__GPIO_EMIO_WIDTH {95} \
-   CONFIG.PSU__GPIO_EMIO__PERIPHERAL__ENABLE {0} \
-   CONFIG.PSU__GPIO_EMIO__PERIPHERAL__IO {<Select>} \
+   CONFIG.PSU__GPIO_EMIO__PERIPHERAL__ENABLE {1} \
+   CONFIG.PSU__GPIO_EMIO__PERIPHERAL__IO {95} \
    CONFIG.PSU__GPIO_EMIO__WIDTH {[94:0]} \
    CONFIG.PSU__GPU_PP0__POWER__ON {1} \
    CONFIG.PSU__GPU_PP1__POWER__ON {1} \
@@ -1991,7 +1973,7 @@ proc create_root_design { parentCell } {
   # Create interface ports
   set mgt_clk [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:diff_clock_rtl:1.0 mgt_clk ]
 
-  set sfp [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:sfp_rtl:1.0 sfp ]
+  set sgmii [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:sgmii_rtl:1.0 sgmii ]
 
 
   # Create ports
@@ -2005,7 +1987,7 @@ proc create_root_design { parentCell } {
   set axi_eth_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_ethernet:7.1 axi_eth_0 ]
   set_property -dict [ list \
    CONFIG.PHYADDR {2} \
-   CONFIG.PHY_TYPE {1000BaseX} \
+   CONFIG.PHY_TYPE {SGMII} \
    CONFIG.RXCSUM {Full} \
    CONFIG.RXMEM {32k} \
    CONFIG.Statistics_Reset {true} \
@@ -2047,6 +2029,10 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.SENSITIVITY {EDGE_RISING} \
  ] [get_bd_pins /axi_eth_0/mac_irq]
+
+  set_property -dict [ list \
+   CONFIG.POLARITY {ACTIVE_LOW} \
+ ] [get_bd_pins /axi_eth_0/phy_rst_n]
 
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_HIGH} \
@@ -2121,7 +2107,7 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net axi_eth_0_dma_M_AXI_SG [get_bd_intf_pins axi_eth_0_dma/M_AXI_SG] [get_bd_intf_pins zynq_ps/S00_AXI]
   connect_bd_intf_net -intf_net axi_eth_0_m_axis_rxd [get_bd_intf_pins axi_eth_0/m_axis_rxd] [get_bd_intf_pins axi_eth_0_dma/S_AXIS_S2MM]
   connect_bd_intf_net -intf_net axi_eth_0_m_axis_rxs [get_bd_intf_pins axi_eth_0/m_axis_rxs] [get_bd_intf_pins axi_eth_0_dma/S_AXIS_STS]
-  connect_bd_intf_net -intf_net axi_eth_0_sfp [get_bd_intf_ports sfp] [get_bd_intf_pins axi_eth_0/sfp]
+  connect_bd_intf_net -intf_net axi_eth_0_sgmii [get_bd_intf_ports sgmii] [get_bd_intf_pins axi_eth_0/sgmii]
   connect_bd_intf_net -intf_net mgt_clk_1 [get_bd_intf_ports mgt_clk] [get_bd_intf_pins axi_eth_0/mgt_clk]
   connect_bd_intf_net -intf_net zynq_ps_M00_AXI [get_bd_intf_pins axi_eth_0_dma/S_AXI_LITE] [get_bd_intf_pins zynq_ps/M00_AXI]
   connect_bd_intf_net -intf_net zynq_ps_M01_AXI [get_bd_intf_pins axi_eth_0/s_axi] [get_bd_intf_pins zynq_ps/M01_AXI]
