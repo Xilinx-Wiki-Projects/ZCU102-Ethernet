@@ -42,6 +42,35 @@ Once packaged, the `BOOT.bin` and `image.ub` files (in the `PetaLinux/images/lin
 
 ## **Validation**
 
+### **U-Boot:**
+NOTE: U-Boot validation results are not available
+
+### **Kernel:**
+```
+root@plnx:~# ethtool -s eth0 speed 1000 duplex full autoneg off
+root@plnx:~# [   61.441071] xilinx_axienet 80000000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
+
+root@plnx:~# udhcpc -i eth0
+udhcpc: started, v1.29.2
+udhcpc: sending discover
+udhcpc: sending select for 123.234.10.18
+udhcpc: lease of 123.234.10.18 obtained, lease time 600
+root@plnx:~# ping 123.234.10.1
+PING 123.234.10.1 (123.234.10.1): 56 data bytes
+64 bytes from 123.234.10.1: seq=0 ttl=64 time=0.397 ms
+64 bytes from 123.234.10.1: seq=1 ttl=64 time=0.202 ms
+64 bytes from 123.234.10.1: seq=2 ttl=64 time=0.118 ms
+64 bytes from 123.234.10.1: seq=3 ttl=64 time=0.136 ms
+64 bytes from 123.234.10.1: seq=4 ttl=64 time=0.143 ms
+64 bytes from 123.234.10.1: seq=5 ttl=64 time=0.138 ms
+^V64 bytes from 123.234.10.1: seq=6 ttl=64 time=0.167 ms
+64 bytes from 123.234.10.1: seq=7 ttl=64 time=0.167 ms
+^C
+--- 123.234.10.1 ping statistics ---
+8 packets transmitted, 8 packets received, 0% packet loss
+round-trip min/avg/max = 0.118/0.183/0.397 ms
+root@plnx:~#
+```
 ---
 
 ## **Known Issues**
