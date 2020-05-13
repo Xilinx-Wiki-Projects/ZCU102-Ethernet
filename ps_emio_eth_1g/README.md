@@ -41,7 +41,6 @@ Once packaged, the `BOOT.bin` and `image.ub` files (in the `PetaLinux/images/lin
 ---
 
 ## **Validation**
-## **Validation**
 ### **U-Boot:**
 ```
 ZynqMP> dhcp
