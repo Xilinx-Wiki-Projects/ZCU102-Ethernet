@@ -41,7 +41,59 @@ Once packaged, the `BOOT.bin` and `image.ub` files (in the `PetaLinux/images/lin
 ---
 
 ## **Validation**
+## **Validation**
+### **U-Boot:**
+```
+ZynqMP> dhcp
+ethernet@ff0b0000 Waiting for PHY auto negotiation to complete. done
+BOOTP broadcast 1
+BOOTP broadcast 2
+BOOTP broadcast 3
+DHCP client bound to address 123.234.10.32 (1297 ms)
+ZynqMP> ping 123.234.10.1
+Using ethernet@ff0b0000 device
+host 123.234.10.1 is alive
+ZynqMP>
+```
+### **Kernel:**
+```
+root@plnx:~# ifconfig
+eth0      Link encap:Ethernet  HWaddr DE:AD:BE:EF:00:00
+          inet addr:123.234.10.18  Bcast:123.234.10.255  Mask:255.255.255.0
+          inet6 addr: fe80::dcad:beff:feef:0/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:64 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:73 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:4170 (4.0 KiB)  TX bytes:12088 (11.8 KiB)
+          Interrupt:29
 
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+root@plnx:~# ping -I eth0 123.234.10.1 -c 9
+PING 123.234.10.1 (123.234.10.1): 56 data bytes
+64 bytes from 123.234.10.1: seq=0 ttl=64 time=0.239 ms
+64 bytes from 123.234.10.1: seq=1 ttl=64 time=0.134 ms
+64 bytes from 123.234.10.1: seq=2 ttl=64 time=0.146 ms
+64 bytes from 123.234.10.1: seq=3 ttl=64 time=0.138 ms
+64 bytes from 123.234.10.1: seq=4 ttl=64 time=0.150 ms
+64 bytes from 123.234.10.1: seq=5 ttl=64 time=0.193 ms
+64 bytes from 123.234.10.1: seq=6 ttl=64 time=0.213 ms
+64 bytes from 123.234.10.1: seq=7 ttl=64 time=0.142 ms
+64 bytes from 123.234.10.1: seq=8 ttl=64 time=0.138 ms
+
+--- 123.234.10.1 ping statistics ---
+9 packets transmitted, 9 packets received, 0% packet loss
+round-trip min/avg/max = 0.134/0.165/0.239 ms
+root@plnx:~#
+```
 ---
 
 ## **Known Issues**
