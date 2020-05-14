@@ -46,33 +46,34 @@ directory. To package these images for SD boot, run the following from the `Peta
 
 Once packaged, the `BOOT.bin` and `image.ub` files (in the `PetaLinux/images/linux` directory) can be copied to an SD card, and used to boot.
 
+
 ---
 
 ## **Validation**
 ### **U-Boot:**
 ```
 ZynqMP> dhcp
-ethernet@ff0b0000 Waiting for PHY auto negotiation to complete. done
+ethernet@ff0b0000 Waiting for PHY auto negotiation to complete.. done
 BOOTP broadcast 1
 BOOTP broadcast 2
 BOOTP broadcast 3
-DHCP client bound to address 123.234.10.32 (1297 ms)
-ZynqMP> ping 123.234.10.1
+DHCP client bound to address 123.234.1.70 (1257 ms)
+ZynqMP> ping 123.234.1.1
 Using ethernet@ff0b0000 device
-host 123.234.10.1 is alive
+host 123.234.1.1 is alive
 ZynqMP>
 ```
 ### **Kernel:**
 ```
 root@plnx:~# ifconfig
-eth0      Link encap:Ethernet  HWaddr DE:AD:BE:EF:00:00
-          inet addr:123.234.10.18  Bcast:123.234.10.255  Mask:255.255.255.0
-          inet6 addr: fe80::dcad:beff:feef:0/64 Scope:Link
+eth0      Link encap:Ethernet  HWaddr 00:0A:35:00:22:01
+          inet addr:123.234.1.10  Bcast:123.234.1.255  Mask:255.255.255.0
+          inet6 addr: fe80::20a:35ff:fe00:2201/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:64 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:73 errors:0 dropped:0 overruns:0 carrier:0
+          RX packets:4 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000
-          RX bytes:4170 (4.0 KiB)  TX bytes:12088 (11.8 KiB)
+          RX bytes:750 (750.0 B)  TX bytes:1706 (1.6 KiB)
           Interrupt:29
 
 lo        Link encap:Local Loopback
@@ -84,22 +85,24 @@ lo        Link encap:Local Loopback
           collisions:0 txqueuelen:1000
           RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
 
-root@plnx:~# ping -I eth0 123.234.10.1 -c 9
-PING 123.234.10.1 (123.234.10.1): 56 data bytes
-64 bytes from 123.234.10.1: seq=0 ttl=64 time=0.239 ms
-64 bytes from 123.234.10.1: seq=1 ttl=64 time=0.134 ms
-64 bytes from 123.234.10.1: seq=2 ttl=64 time=0.146 ms
-64 bytes from 123.234.10.1: seq=3 ttl=64 time=0.138 ms
-64 bytes from 123.234.10.1: seq=4 ttl=64 time=0.150 ms
-64 bytes from 123.234.10.1: seq=5 ttl=64 time=0.193 ms
-64 bytes from 123.234.10.1: seq=6 ttl=64 time=0.213 ms
-64 bytes from 123.234.10.1: seq=7 ttl=64 time=0.142 ms
-64 bytes from 123.234.10.1: seq=8 ttl=64 time=0.138 ms
-
---- 123.234.10.1 ping statistics ---
-9 packets transmitted, 9 packets received, 0% packet loss
-round-trip min/avg/max = 0.134/0.165/0.239 ms
+root@plnx:~# ping 123.234.1.1
+PING 123.234.1.1 (123.234.1.1): 56 data bytes
+64 bytes from 123.234.1.1: seq=0 ttl=64 time=0.284 ms
+64 bytes from 123.234.1.1: seq=1 ttl=64 time=0.210 ms
+64 bytes from 123.234.1.1: seq=2 ttl=64 time=0.245 ms
+64 bytes from 123.234.1.1: seq=3 ttl=64 time=0.159 ms
+64 bytes from 123.234.1.1: seq=4 ttl=64 time=0.223 ms
+64 bytes from 123.234.1.1: seq=5 ttl=64 time=0.183 ms
+64 bytes from 123.234.1.1: seq=6 ttl=64 time=0.233 ms
+64 bytes from 123.234.1.1: seq=7 ttl=64 time=0.186 ms
+64 bytes from 123.234.1.1: seq=8 ttl=64 time=0.166 ms
+64 bytes from 123.234.1.1: seq=9 ttl=64 time=0.227 ms
+^C
+--- 123.234.1.1 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.159/0.211/0.284 ms
 root@plnx:~#
+
 ```
 ---
 
