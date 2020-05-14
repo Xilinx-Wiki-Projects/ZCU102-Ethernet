@@ -46,4 +46,3 @@ set_property PACKAGE_PIN AH13 [get_ports {pl_reset_led[0]}]
 set_property PACKAGE_PIN AH14 [get_ports {mdc_clk_led[0]}]
 #GPIO_LED[7]
 set_property PACKAGE_PIN AL12 [get_ports {gmii_rx_clk_led[0]}]
-
