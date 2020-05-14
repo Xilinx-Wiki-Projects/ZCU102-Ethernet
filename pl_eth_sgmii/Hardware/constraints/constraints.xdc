@@ -36,5 +36,3 @@ set_property PACKAGE_PIN    aj14  [get_ports axi_lite_clk_led]
 #set_property PACKAGE_PIN    aj15  [get_ports mgt_clkN_led]
 set_property PACKAGE_PIN    ah13  [get_ports mgt_clk_led]
 set_property PACKAGE_PIN    ah14  [get_ports rx_clk_led]
-
-

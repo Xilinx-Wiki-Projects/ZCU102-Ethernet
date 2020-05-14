@@ -50,33 +50,58 @@ Once packaged, the `BOOT.bin` and `image.ub` files (in the `PetaLinux/images/lin
 
 ## **Validation**
 ### **U-Boot:**
-NOTE: U-Boot validation results are not available
+```
+ZynqMP> dhcp
+ethernet@80000000 Waiting for PHY auto negotiation to complete. done
+BOOTP broadcast 1
+BOOTP broadcast 2
+BOOTP broadcast 3
+DHCP client bound to address 123.234.1.70 (1053 ms)
+ZynqMP> ping 123.234.1.1
+ethernet@80000000 Waiting for PHY auto negotiation to complete. done
+Using ethernet@80000000 device
+host 123.234.1.1 is alive
+ZynqMP>
+```
 
 ### **Kernel:**
 ```
-root@plnx:~# ethtool -s eth0 speed 1000 duplex full autoneg off
-root@plnx:~# [   38.161323] xilinx_axienet 80000000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
+root@plnx:~# ifconfig
+eth0      Link encap:Ethernet  HWaddr 00:0A:35:00:22:01
+          inet addr:123.234.1.10  Bcast:123.234.1.255  Mask:255.255.255.0
+          inet6 addr: fe80::20a:35ff:fe00:2201/64 Scope:Link
+          UP BROADCAST RUNNING  MTU:1500  Metric:1
+          RX packets:4 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:806 (806.0 B)  TX bytes:1648 (1.6 KiB)
 
-root@plnx:~# udhcpc -i eth0
-udhcpc: started, v1.29.2
-udhcpc: sending discover
-udhcpc: sending select for 123.234.10.18
-udhcpc: lease of 123.234.10.18 obtained, lease time 600
-root@plnx:~# ping 123.234.10.1 -c 9
-PING 123.234.10.1 (123.234.10.1): 56 data bytes
-64 bytes from 123.234.10.1: seq=0 ttl=64 time=0.374 ms
-64 bytes from 123.234.10.1: seq=1 ttl=64 time=0.236 ms
-64 bytes from 123.234.10.1: seq=2 ttl=64 time=0.167 ms
-64 bytes from 123.234.10.1: seq=3 ttl=64 time=0.150 ms
-64 bytes from 123.234.10.1: seq=4 ttl=64 time=0.235 ms
-64 bytes from 123.234.10.1: seq=5 ttl=64 time=0.191 ms
-64 bytes from 123.234.10.1: seq=6 ttl=64 time=0.265 ms
-64 bytes from 123.234.10.1: seq=7 ttl=64 time=0.201 ms
-64 bytes from 123.234.10.1: seq=8 ttl=64 time=0.127 ms
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
 
---- 123.234.10.1 ping statistics ---
-9 packets transmitted, 9 packets received, 0% packet loss
-round-trip min/avg/max = 0.127/0.216/0.374 ms
+root@plnx:~# ping 123.234.1.1
+PING 123.234.1.1 (123.234.1.1): 56 data bytes
+64 bytes from 123.234.1.1: seq=0 ttl=64 time=0.261 ms
+64 bytes from 123.234.1.1: seq=1 ttl=64 time=0.213 ms
+64 bytes from 123.234.1.1: seq=2 ttl=64 time=0.206 ms
+64 bytes from 123.234.1.1: seq=3 ttl=64 time=0.213 ms
+64 bytes from 123.234.1.1: seq=4 ttl=64 time=0.175 ms
+64 bytes from 123.234.1.1: seq=5 ttl=64 time=0.212 ms
+64 bytes from 123.234.1.1: seq=6 ttl=64 time=0.201 ms
+64 bytes from 123.234.1.1: seq=7 ttl=64 time=0.254 ms
+64 bytes from 123.234.1.1: seq=8 ttl=64 time=0.206 ms
+64 bytes from 123.234.1.1: seq=9 ttl=64 time=0.212 ms
+64 bytes from 123.234.1.1: seq=10 ttl=64 time=0.229 ms
+^C
+--- 123.234.1.1 ping statistics ---
+11 packets transmitted, 11 packets received, 0% packet loss
+round-trip min/avg/max = 0.175/0.216/0.261 ms
 root@plnx:~#
 
 ```

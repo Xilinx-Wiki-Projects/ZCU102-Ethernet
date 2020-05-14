@@ -33,7 +33,7 @@ set script_folder [_tcl::get_script_folder]
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2019.1
+set scripts_vivado_version 2019.2
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
@@ -845,6 +845,7 @@ proc create_hier_cell_zynq_ps { parentCell nameHier } {
    CONFIG.PSU_SMC_CYCLE_T4 {NA} \
    CONFIG.PSU_SMC_CYCLE_T5 {NA} \
    CONFIG.PSU_SMC_CYCLE_T6 {NA} \
+   CONFIG.PSU_USB3__DUAL_CLOCK_ENABLE {0} \
    CONFIG.PSU_VALUE_SILVERSION {3} \
    CONFIG.PSU__ACPU0__POWER__ON {1} \
    CONFIG.PSU__ACPU1__POWER__ON {1} \
@@ -1541,6 +1542,7 @@ proc create_hier_cell_zynq_ps { parentCell nameHier } {
    CONFIG.PSU__OCM_BANK1__POWER__ON {1} \
    CONFIG.PSU__OCM_BANK2__POWER__ON {1} \
    CONFIG.PSU__OCM_BANK3__POWER__ON {1} \
+   CONFIG.PSU__OVERRIDE_HPX_QOS {0} \
    CONFIG.PSU__OVERRIDE__BASIC_CLOCK {0} \
    CONFIG.PSU__PCIE__ACS_VIOLAION {0} \
    CONFIG.PSU__PCIE__ACS_VIOLATION {0} \
@@ -1644,7 +1646,7 @@ proc create_hier_cell_zynq_ps { parentCell nameHier } {
    CONFIG.PSU__PROTECTION__DDR_SEGMENTS {NONE} \
    CONFIG.PSU__PROTECTION__DEBUG {0} \
    CONFIG.PSU__PROTECTION__ENABLE {0} \
-   CONFIG.PSU__PROTECTION__FPD_SEGMENTS {SA:0xFD1A0000 ;SIZE:1280;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD000000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD010000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD020000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD030000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD040000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD050000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD610000 ;SIZE:512;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware  |  SA:0xFD5D0000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware} \
+   CONFIG.PSU__PROTECTION__FPD_SEGMENTS {SA:0xFD1A0000 ;SIZE:1280;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware   |   SA:0xFD000000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware   |   SA:0xFD010000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware   |   SA:0xFD020000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware   |   SA:0xFD030000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware   |   SA:0xFD040000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware   |   SA:0xFD050000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware   |   SA:0xFD610000 ;SIZE:512;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware   |   SA:0xFD5D0000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware} \
    CONFIG.PSU__PROTECTION__LOCK_UNUSED_SEGMENTS {0} \
    CONFIG.PSU__PROTECTION__LPD_SEGMENTS {SA:0xFF980000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware|SA:0xFF5E0000 ;SIZE:2560;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware|SA:0xFFCC0000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware|SA:0xFF180000 ;SIZE:768;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware|SA:0xFF410000 ;SIZE:640;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware|SA:0xFFA70000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware|SA:0xFF9A0000 ;SIZE:64;UNIT:KB ;RegionTZ:Secure ;WrAllowed:Read/Write;subsystemId:PMU Firmware} \
    CONFIG.PSU__PROTECTION__MASTERS {USB1:NonSecure;0|USB0:NonSecure;0|S_AXI_LPD:NA;0|S_AXI_HPC1_FPD:NA;0|S_AXI_HPC0_FPD:NA;0|S_AXI_HP3_FPD:NA;0|S_AXI_HP2_FPD:NA;0|S_AXI_HP1_FPD:NA;0|S_AXI_HP0_FPD:NA;1|S_AXI_ACP:NA;0|S_AXI_ACE:NA;0|SD1:NonSecure;1|SD0:NonSecure;0|SATA1:NonSecure;0|SATA0:NonSecure;0|RPU1:Secure;1|RPU0:Secure;1|QSPI:NonSecure;0|PMU:NA;1|PCIe:NonSecure;0|NAND:NonSecure;0|LDMA:NonSecure;1|GPU:NonSecure;1|GEM3:NonSecure;0|GEM2:NonSecure;0|GEM1:NonSecure;0|GEM0:NonSecure;0|FDMA:NonSecure;1|DP:NonSecure;0|DAP:NA;1|Coresight:NA;1|CSU:NA;1|APU:NA;1} \
@@ -2148,227 +2150,107 @@ proc create_root_design { parentCell } {
   connect_bd_net -net zynq_ps_peripheral_reset [get_bd_pins clk_wiz_0/reset] [get_bd_pins zynq_ps/peripheral_reset]
 
   # Create address segments
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF9B0000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_AFIFM6] SEG_zusp_ps_HP0_AFIFM6
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFA50000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_AMS] SEG_zusp_ps_HP0_AMS
-  create_bd_addr_seg -range 0x00040000 -offset 0xFFA00000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_APM] SEG_zusp_ps_HP0_APM
-  create_bd_addr_seg -range 0x00020000 -offset 0xFF5E0000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CRL_APB] SEG_zusp_ps_HP0_CRL_APB
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFCA0000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CSU] SEG_zusp_ps_HP0_CSU
-  create_bd_addr_seg -range 0x00020000 -offset 0xFFC80000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CSUDMA] SEG_zusp_ps_HP0_CSUDMA
-  create_bd_addr_seg -range 0x80000000 -offset 0x00000000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_DDR_LOW] SEG_zusp_ps_HP0_DDR_LOW
-  create_bd_addr_seg -range 0x80000000 -offset 0x00000000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_DDR_LOW] SEG_zusp_ps_HP0_DDR_LOW
-  create_bd_addr_seg -range 0x80000000 -offset 0x00000000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_DDR_LOW] SEG_zusp_ps_HP0_DDR_LOW
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFCC0000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_EFUSE] SEG_zusp_ps_HP0_EFUSE
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF020000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_I2C0] SEG_zusp_ps_HP0_I2C0
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF030000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_I2C1] SEG_zusp_ps_HP0_I2C1
-  create_bd_addr_seg -range 0x00080000 -offset 0xFF180000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IOUSLCR] SEG_zusp_ps_HP0_IOUSLCR
-  create_bd_addr_seg -range 0x00100000 -offset 0xFF300000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IPI] SEG_zusp_ps_HP0_IPI
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF990000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IPI_BUFFERS] SEG_zusp_ps_HP0_IPI_BUFFERS
-  create_bd_addr_seg -range 0x00080000 -offset 0xFFA80000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LDMA] SEG_zusp_ps_HP0_LDMA
-  create_bd_addr_seg -range 0x00100000 -offset 0xFF400000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_SLCR] SEG_zusp_ps_HP0_LPD_SLCR
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF980000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_XPPU] SEG_zusp_ps_HP0_LPD_XPPU
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF9C0000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_XPPU_SINK] SEG_zusp_ps_HP0_LPD_XPPU_SINK
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFCF0000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_MBISTJTAG] SEG_zusp_ps_HP0_MBISTJTAG
-  create_bd_addr_seg -range 0x00040000 -offset 0xFFFC0000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM] SEG_zusp_ps_HP0_OCM
-  create_bd_addr_seg -range 0x00040000 -offset 0xFFFC0000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM] SEG_zusp_ps_HP0_OCM
-  create_bd_addr_seg -range 0x00040000 -offset 0xFFFC0000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM] SEG_zusp_ps_HP0_OCM
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF960000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM_CTRL] SEG_zusp_ps_HP0_OCM_CTRL
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFA70000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM_XMPU_CFG] SEG_zusp_ps_HP0_OCM_XMPU_CFG
-  create_bd_addr_seg -range 0x00040000 -offset 0xFFD80000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_PMU_GLOBAL] SEG_zusp_ps_HP0_PMU_GLOBAL
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF9A0000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RPU] SEG_zusp_ps_HP0_RPU
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFCE0000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RSA] SEG_zusp_ps_HP0_RSA
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFA60000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RTC] SEG_zusp_ps_HP0_RTC
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF170000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_SD1] SEG_zusp_ps_HP0_SD1
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF110000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC0] SEG_zusp_ps_HP0_TTC0
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF120000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC1] SEG_zusp_ps_HP0_TTC1
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF130000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC2] SEG_zusp_ps_HP0_TTC2
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF140000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC3] SEG_zusp_ps_HP0_TTC3
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF000000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_UART0] SEG_zusp_ps_HP0_UART0
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF010000 [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_UART1] SEG_zusp_ps_HP0_UART1
-  create_bd_addr_seg -range 0x00040000 -offset 0x80000000 [get_bd_addr_spaces zynq_ps/zusp_ps/Data] [get_bd_addr_segs axi_eth_0/s_axi/Reg0] SEG_axi_eth_0_Reg0
-  create_bd_addr_seg -range 0x00010000 -offset 0x80040000 [get_bd_addr_spaces zynq_ps/zusp_ps/Data] [get_bd_addr_segs axi_eth_0_dma/S_AXI_LITE/Reg] SEG_axi_eth_0_dma_Reg
-  create_bd_addr_seg -range 0x00010000 -offset 0x80050000 [get_bd_addr_spaces zynq_ps/zusp_ps/Data] [get_bd_addr_segs other_perph/axi_timer_1/S_AXI/Reg] SEG_axi_timer_1_Reg
+  assign_bd_address -offset 0xFF9B0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_AFIFM6] -force
+  assign_bd_address -offset 0xFFA50000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_AMS] -force
+  assign_bd_address -offset 0xFFA00000 -range 0x00040000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_APM] -force
+  assign_bd_address -offset 0xFF5E0000 -range 0x00020000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CRL_APB] -force
+  assign_bd_address -offset 0xFFCA0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CSU] -force
+  assign_bd_address -offset 0xFFC80000 -range 0x00020000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CSUDMA] -force
+  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_DDR_LOW] -force
+  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_DDR_LOW] -force
+  assign_bd_address -offset 0x00000000 -range 0x80000000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_DDR_LOW] -force
+  assign_bd_address -offset 0xFFCC0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_EFUSE] -force
+  assign_bd_address -offset 0xFF020000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_I2C0] -force
+  assign_bd_address -offset 0xFF030000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_I2C1] -force
+  assign_bd_address -offset 0xFF180000 -range 0x00080000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IOUSLCR] -force
+  assign_bd_address -offset 0xFF300000 -range 0x00100000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IPI] -force
+  assign_bd_address -offset 0xFF990000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IPI_BUFFERS] -force
+  assign_bd_address -offset 0xFFA80000 -range 0x00080000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LDMA] -force
+  assign_bd_address -offset 0xFF400000 -range 0x00100000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_SLCR] -force
+  assign_bd_address -offset 0xFF980000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_XPPU] -force
+  assign_bd_address -offset 0xFF9C0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_XPPU_SINK] -force
+  assign_bd_address -offset 0xFFCF0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_MBISTJTAG] -force
+  assign_bd_address -offset 0xFFFC0000 -range 0x00040000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM] -force
+  assign_bd_address -offset 0xFFFC0000 -range 0x00040000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM] -force
+  assign_bd_address -offset 0xFFFC0000 -range 0x00040000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM] -force
+  assign_bd_address -offset 0xFF960000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM_CTRL] -force
+  assign_bd_address -offset 0xFFA70000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM_XMPU_CFG] -force
+  assign_bd_address -offset 0xFFD80000 -range 0x00040000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_PMU_GLOBAL] -force
+  assign_bd_address -offset 0xFF9A0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RPU] -force
+  assign_bd_address -offset 0xFFCE0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RSA] -force
+  assign_bd_address -offset 0xFFA60000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RTC] -force
+  assign_bd_address -offset 0xFF170000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_SD1] -force
+  assign_bd_address -offset 0xFF110000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC0] -force
+  assign_bd_address -offset 0xFF120000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC1] -force
+  assign_bd_address -offset 0xFF130000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC2] -force
+  assign_bd_address -offset 0xFF140000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC3] -force
+  assign_bd_address -offset 0xFF000000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_UART0] -force
+  assign_bd_address -offset 0xFF010000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_SG] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_UART1] -force
+  assign_bd_address -offset 0x80000000 -range 0x00040000 -target_address_space [get_bd_addr_spaces zynq_ps/zusp_ps/Data] [get_bd_addr_segs axi_eth_0/s_axi/Reg0] -force
+  assign_bd_address -offset 0x80040000 -range 0x00010000 -target_address_space [get_bd_addr_spaces zynq_ps/zusp_ps/Data] [get_bd_addr_segs axi_eth_0_dma/S_AXI_LITE/Reg] -force
+  assign_bd_address -offset 0x80050000 -range 0x00010000 -target_address_space [get_bd_addr_spaces zynq_ps/zusp_ps/Data] [get_bd_addr_segs other_perph/axi_timer_1/S_AXI/Reg] -force
 
   # Exclude Address Segments
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF9B0000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_AFIFM6] SEG_zusp_ps_HP0_AFIFM6
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_AFIFM6]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFA50000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_AMS] SEG_zusp_ps_HP0_AMS
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_AMS]
-
-  create_bd_addr_seg -range 0x00040000 -offset 0xFFA00000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_APM] SEG_zusp_ps_HP0_APM
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_APM]
-
-  create_bd_addr_seg -range 0x00020000 -offset 0xFF5E0000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CRL_APB] SEG_zusp_ps_HP0_CRL_APB
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_CRL_APB]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFCA0000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CSU] SEG_zusp_ps_HP0_CSU
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_CSU]
-
-  create_bd_addr_seg -range 0x00020000 -offset 0xFFC80000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CSUDMA] SEG_zusp_ps_HP0_CSUDMA
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_CSUDMA]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFCC0000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_EFUSE] SEG_zusp_ps_HP0_EFUSE
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_EFUSE]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF020000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_I2C0] SEG_zusp_ps_HP0_I2C0
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_I2C0]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF030000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_I2C1] SEG_zusp_ps_HP0_I2C1
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_I2C1]
-
-  create_bd_addr_seg -range 0x00080000 -offset 0xFF180000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IOUSLCR] SEG_zusp_ps_HP0_IOUSLCR
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_IOUSLCR]
-
-  create_bd_addr_seg -range 0x00100000 -offset 0xFF300000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IPI] SEG_zusp_ps_HP0_IPI
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_IPI]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF990000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IPI_BUFFERS] SEG_zusp_ps_HP0_IPI_BUFFERS
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_IPI_BUFFERS]
-
-  create_bd_addr_seg -range 0x00080000 -offset 0xFFA80000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LDMA] SEG_zusp_ps_HP0_LDMA
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_LDMA]
-
-  create_bd_addr_seg -range 0x00100000 -offset 0xFF400000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_SLCR] SEG_zusp_ps_HP0_LPD_SLCR
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_LPD_SLCR]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF980000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_XPPU] SEG_zusp_ps_HP0_LPD_XPPU
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_LPD_XPPU]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF9C0000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_XPPU_SINK] SEG_zusp_ps_HP0_LPD_XPPU_SINK
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_LPD_XPPU_SINK]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFCF0000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_MBISTJTAG] SEG_zusp_ps_HP0_MBISTJTAG
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_MBISTJTAG]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF960000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM_CTRL] SEG_zusp_ps_HP0_OCM_CTRL
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_OCM_CTRL]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFA70000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM_XMPU_CFG] SEG_zusp_ps_HP0_OCM_XMPU_CFG
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_OCM_XMPU_CFG]
-
-  create_bd_addr_seg -range 0x00040000 -offset 0xFFD80000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_PMU_GLOBAL] SEG_zusp_ps_HP0_PMU_GLOBAL
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_PMU_GLOBAL]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF9A0000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RPU] SEG_zusp_ps_HP0_RPU
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_RPU]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFCE0000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RSA] SEG_zusp_ps_HP0_RSA
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_RSA]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFA60000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RTC] SEG_zusp_ps_HP0_RTC
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_RTC]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF170000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_SD1] SEG_zusp_ps_HP0_SD1
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_SD1]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF110000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC0] SEG_zusp_ps_HP0_TTC0
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_TTC0]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF120000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC1] SEG_zusp_ps_HP0_TTC1
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_TTC1]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF130000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC2] SEG_zusp_ps_HP0_TTC2
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_TTC2]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF140000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC3] SEG_zusp_ps_HP0_TTC3
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_TTC3]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF000000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_UART0] SEG_zusp_ps_HP0_UART0
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_UART0]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF010000 [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_UART1] SEG_zusp_ps_HP0_UART1
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_MM2S/SEG_zusp_ps_HP0_UART1]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF9B0000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_AFIFM6] SEG_zusp_ps_HP0_AFIFM6
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_AFIFM6]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFA50000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_AMS] SEG_zusp_ps_HP0_AMS
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_AMS]
-
-  create_bd_addr_seg -range 0x00040000 -offset 0xFFA00000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_APM] SEG_zusp_ps_HP0_APM
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_APM]
-
-  create_bd_addr_seg -range 0x00020000 -offset 0xFF5E0000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CRL_APB] SEG_zusp_ps_HP0_CRL_APB
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_CRL_APB]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFCA0000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CSU] SEG_zusp_ps_HP0_CSU
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_CSU]
-
-  create_bd_addr_seg -range 0x00020000 -offset 0xFFC80000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CSUDMA] SEG_zusp_ps_HP0_CSUDMA
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_CSUDMA]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFCC0000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_EFUSE] SEG_zusp_ps_HP0_EFUSE
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_EFUSE]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF020000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_I2C0] SEG_zusp_ps_HP0_I2C0
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_I2C0]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF030000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_I2C1] SEG_zusp_ps_HP0_I2C1
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_I2C1]
-
-  create_bd_addr_seg -range 0x00080000 -offset 0xFF180000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IOUSLCR] SEG_zusp_ps_HP0_IOUSLCR
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_IOUSLCR]
-
-  create_bd_addr_seg -range 0x00100000 -offset 0xFF300000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IPI] SEG_zusp_ps_HP0_IPI
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_IPI]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF990000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IPI_BUFFERS] SEG_zusp_ps_HP0_IPI_BUFFERS
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_IPI_BUFFERS]
-
-  create_bd_addr_seg -range 0x00080000 -offset 0xFFA80000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LDMA] SEG_zusp_ps_HP0_LDMA
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_LDMA]
-
-  create_bd_addr_seg -range 0x00100000 -offset 0xFF400000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_SLCR] SEG_zusp_ps_HP0_LPD_SLCR
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_LPD_SLCR]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF980000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_XPPU] SEG_zusp_ps_HP0_LPD_XPPU
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_LPD_XPPU]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF9C0000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_XPPU_SINK] SEG_zusp_ps_HP0_LPD_XPPU_SINK
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_LPD_XPPU_SINK]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFCF0000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_MBISTJTAG] SEG_zusp_ps_HP0_MBISTJTAG
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_MBISTJTAG]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF960000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM_CTRL] SEG_zusp_ps_HP0_OCM_CTRL
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_OCM_CTRL]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFA70000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM_XMPU_CFG] SEG_zusp_ps_HP0_OCM_XMPU_CFG
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_OCM_XMPU_CFG]
-
-  create_bd_addr_seg -range 0x00040000 -offset 0xFFD80000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_PMU_GLOBAL] SEG_zusp_ps_HP0_PMU_GLOBAL
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_PMU_GLOBAL]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF9A0000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RPU] SEG_zusp_ps_HP0_RPU
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_RPU]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFCE0000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RSA] SEG_zusp_ps_HP0_RSA
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_RSA]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFFA60000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RTC] SEG_zusp_ps_HP0_RTC
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_RTC]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF170000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_SD1] SEG_zusp_ps_HP0_SD1
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_SD1]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF110000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC0] SEG_zusp_ps_HP0_TTC0
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_TTC0]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF120000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC1] SEG_zusp_ps_HP0_TTC1
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_TTC1]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF130000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC2] SEG_zusp_ps_HP0_TTC2
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_TTC2]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF140000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC3] SEG_zusp_ps_HP0_TTC3
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_TTC3]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF000000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_UART0] SEG_zusp_ps_HP0_UART0
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_UART0]
-
-  create_bd_addr_seg -range 0x00010000 -offset 0xFF010000 [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_UART1] SEG_zusp_ps_HP0_UART1
-  exclude_bd_addr_seg [get_bd_addr_segs axi_eth_0_dma/Data_S2MM/SEG_zusp_ps_HP0_UART1]
-
+  exclude_bd_addr_seg -offset 0xFF9B0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_AFIFM6]
+  exclude_bd_addr_seg -offset 0xFFA50000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_AMS]
+  exclude_bd_addr_seg -offset 0xFFA00000 -range 0x00040000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_APM]
+  exclude_bd_addr_seg -offset 0xFF5E0000 -range 0x00020000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CRL_APB]
+  exclude_bd_addr_seg -offset 0xFFCA0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CSU]
+  exclude_bd_addr_seg -offset 0xFFC80000 -range 0x00020000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CSUDMA]
+  exclude_bd_addr_seg -offset 0xFFCC0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_EFUSE]
+  exclude_bd_addr_seg -offset 0xFF020000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_I2C0]
+  exclude_bd_addr_seg -offset 0xFF030000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_I2C1]
+  exclude_bd_addr_seg -offset 0xFF180000 -range 0x00080000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IOUSLCR]
+  exclude_bd_addr_seg -offset 0xFF300000 -range 0x00100000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IPI]
+  exclude_bd_addr_seg -offset 0xFF990000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IPI_BUFFERS]
+  exclude_bd_addr_seg -offset 0xFFA80000 -range 0x00080000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LDMA]
+  exclude_bd_addr_seg -offset 0xFF400000 -range 0x00100000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_SLCR]
+  exclude_bd_addr_seg -offset 0xFF980000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_XPPU]
+  exclude_bd_addr_seg -offset 0xFF9C0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_XPPU_SINK]
+  exclude_bd_addr_seg -offset 0xFFCF0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_MBISTJTAG]
+  exclude_bd_addr_seg -offset 0xFF960000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM_CTRL]
+  exclude_bd_addr_seg -offset 0xFFA70000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM_XMPU_CFG]
+  exclude_bd_addr_seg -offset 0xFFD80000 -range 0x00040000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_PMU_GLOBAL]
+  exclude_bd_addr_seg -offset 0xFF9A0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RPU]
+  exclude_bd_addr_seg -offset 0xFFCE0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RSA]
+  exclude_bd_addr_seg -offset 0xFFA60000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RTC]
+  exclude_bd_addr_seg -offset 0xFF170000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_SD1]
+  exclude_bd_addr_seg -offset 0xFF110000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC0]
+  exclude_bd_addr_seg -offset 0xFF120000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC1]
+  exclude_bd_addr_seg -offset 0xFF130000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC2]
+  exclude_bd_addr_seg -offset 0xFF140000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC3]
+  exclude_bd_addr_seg -offset 0xFF000000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_UART0]
+  exclude_bd_addr_seg -offset 0xFF010000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_MM2S] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_UART1]
+  exclude_bd_addr_seg -offset 0xFF9B0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_AFIFM6]
+  exclude_bd_addr_seg -offset 0xFFA50000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_AMS]
+  exclude_bd_addr_seg -offset 0xFFA00000 -range 0x00040000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_APM]
+  exclude_bd_addr_seg -offset 0xFF5E0000 -range 0x00020000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CRL_APB]
+  exclude_bd_addr_seg -offset 0xFFCA0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CSU]
+  exclude_bd_addr_seg -offset 0xFFC80000 -range 0x00020000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_CSUDMA]
+  exclude_bd_addr_seg -offset 0xFFCC0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_EFUSE]
+  exclude_bd_addr_seg -offset 0xFF020000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_I2C0]
+  exclude_bd_addr_seg -offset 0xFF030000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_I2C1]
+  exclude_bd_addr_seg -offset 0xFF180000 -range 0x00080000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IOUSLCR]
+  exclude_bd_addr_seg -offset 0xFF300000 -range 0x00100000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IPI]
+  exclude_bd_addr_seg -offset 0xFF990000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_IPI_BUFFERS]
+  exclude_bd_addr_seg -offset 0xFFA80000 -range 0x00080000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LDMA]
+  exclude_bd_addr_seg -offset 0xFF400000 -range 0x00100000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_SLCR]
+  exclude_bd_addr_seg -offset 0xFF980000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_XPPU]
+  exclude_bd_addr_seg -offset 0xFF9C0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_LPD_XPPU_SINK]
+  exclude_bd_addr_seg -offset 0xFFCF0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_MBISTJTAG]
+  exclude_bd_addr_seg -offset 0xFF960000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM_CTRL]
+  exclude_bd_addr_seg -offset 0xFFA70000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_OCM_XMPU_CFG]
+  exclude_bd_addr_seg -offset 0xFFD80000 -range 0x00040000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_PMU_GLOBAL]
+  exclude_bd_addr_seg -offset 0xFF9A0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RPU]
+  exclude_bd_addr_seg -offset 0xFFCE0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RSA]
+  exclude_bd_addr_seg -offset 0xFFA60000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_RTC]
+  exclude_bd_addr_seg -offset 0xFF170000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_SD1]
+  exclude_bd_addr_seg -offset 0xFF110000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC0]
+  exclude_bd_addr_seg -offset 0xFF120000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC1]
+  exclude_bd_addr_seg -offset 0xFF130000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC2]
+  exclude_bd_addr_seg -offset 0xFF140000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_TTC3]
+  exclude_bd_addr_seg -offset 0xFF000000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_UART0]
+  exclude_bd_addr_seg -offset 0xFF010000 -range 0x00010000 -target_address_space [get_bd_addr_spaces axi_eth_0_dma/Data_S2MM] [get_bd_addr_segs zynq_ps/zusp_ps/SAXIGP2/HP0_UART1]
 
 
   # Restore current instance
