@@ -51,17 +51,7 @@ Once packaged, the `BOOT.bin` and `image.ub` files (in the `PetaLinux/images/lin
 ## **Validation**
 
 ### **U-Boot:**
-```
-ZynqMP> dhcp
-BOOTP broadcast 1
-BOOTP broadcast 2
-BOOTP broadcast 3
-DHCP client bound to address 123.234.1.70 (1009 ms)
-ZynqMP> ping 123.234.1.1
-Using ethernet@ff0b0000 device
-host 123.234.1.1 is alive
-ZynqMP>
-```
+NOTE: U-Boot validation results are not available
 
 ### **Kernel:**
 ```
