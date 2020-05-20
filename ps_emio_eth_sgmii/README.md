@@ -55,44 +55,31 @@ NOTE: U-Boot validation results are not available
 
 ### **Kernel:**
 ```
-root@plnx:~# ifconfig
-eth0      Link encap:Ethernet  HWaddr 00:0A:35:00:22:01
-          inet addr:123.234.1.10  Bcast:123.234.1.255  Mask:255.255.255.0
-          inet6 addr: fe80::20a:35ff:fe00:2201/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:4 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:13 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:750 (750.0 B)  TX bytes:1780 (1.7 KiB)
-          Interrupt:29
+root@plnx:~# ethtool -s eth0 speed 1000 duplex full autoneg off
+root@plnx:~# [   41.677616] macb ff0b0000.ethernet eth0: unable to generate target frequency: 125000000 Hz
+[   41.685886] macb ff0b0000.ethernet eth0: link up (1000/Full)
 
-lo        Link encap:Local Loopback
-          inet addr:127.0.0.1  Mask:255.0.0.0
-          inet6 addr: ::1/128 Scope:Host
-          UP LOOPBACK RUNNING  MTU:65536  Metric:1
-          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+root@plnx:~# udhcpc -i eth0
+udhcpc: started, v1.29.2
+udhcpc: sending discover
+udhcpc: sending select for 123.234.10.18
+udhcpc: lease of 123.234.10.18 obtained, lease time 600
+root@plnx:~# ping 123.234.10.1 -c 9
+PING 123.234.10.1 (123.234.10.1): 56 data bytes
+64 bytes from 123.234.10.1: seq=0 ttl=64 time=0.255 ms
+64 bytes from 123.234.10.1: seq=1 ttl=64 time=0.181 ms
+64 bytes from 123.234.10.1: seq=2 ttl=64 time=0.219 ms
+64 bytes from 123.234.10.1: seq=3 ttl=64 time=0.233 ms
+64 bytes from 123.234.10.1: seq=4 ttl=64 time=0.196 ms
+64 bytes from 123.234.10.1: seq=5 ttl=64 time=0.160 ms
+64 bytes from 123.234.10.1: seq=6 ttl=64 time=0.231 ms
+64 bytes from 123.234.10.1: seq=7 ttl=64 time=0.185 ms
+64 bytes from 123.234.10.1: seq=8 ttl=64 time=0.167 ms
 
-root@plnx:~# ping 123.234.1.1
-PING 123.234.1.1 (123.234.1.1): 56 data bytes
-64 bytes from 123.234.1.1: seq=0 ttl=64 time=0.270 ms
-64 bytes from 123.234.1.1: seq=1 ttl=64 time=0.178 ms
-64 bytes from 123.234.1.1: seq=2 ttl=64 time=0.216 ms
-64 bytes from 123.234.1.1: seq=3 ttl=64 time=0.182 ms
-64 bytes from 123.234.1.1: seq=4 ttl=64 time=0.211 ms
-64 bytes from 123.234.1.1: seq=5 ttl=64 time=0.247 ms
-64 bytes from 123.234.1.1: seq=6 ttl=64 time=0.209 ms
-64 bytes from 123.234.1.1: seq=7 ttl=64 time=0.221 ms
-64 bytes from 123.234.1.1: seq=8 ttl=64 time=0.182 ms
-64 bytes from 123.234.1.1: seq=9 ttl=64 time=0.232 ms
-^C
---- 123.234.1.1 ping statistics ---
-10 packets transmitted, 10 packets received, 0% packet loss
-round-trip min/avg/max = 0.178/0.214/0.270 ms
+--- 123.234.10.1 ping statistics ---
+9 packets transmitted, 9 packets received, 0% packet loss
+round-trip min/avg/max = 0.160/0.203/0.255 ms
 root@plnx:~#
-
 ```
 ---
 
