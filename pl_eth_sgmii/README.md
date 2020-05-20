@@ -50,19 +50,7 @@ Once packaged, the `BOOT.bin` and `image.ub` files (in the `PetaLinux/images/lin
 
 ## **Validation**
 ### **U-Boot:**
-```
-ZynqMP> dhcp
-ethernet@80000000 Waiting for PHY auto negotiation to complete. done
-BOOTP broadcast 1
-BOOTP broadcast 2
-BOOTP broadcast 3
-DHCP client bound to address 123.234.1.70 (1053 ms)
-ZynqMP> ping 123.234.1.1
-ethernet@80000000 Waiting for PHY auto negotiation to complete. done
-Using ethernet@80000000 device
-host 123.234.1.1 is alive
-ZynqMP>
-```
+NOTE: U-Boot validation results are not available
 
 ### **Kernel:**
 ```
