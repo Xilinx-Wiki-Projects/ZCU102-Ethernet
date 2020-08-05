@@ -1,4 +1,4 @@
-# ZCU102 PS and PL based 1G/10G Ethernet v2019.1
+# ZCU102 PS and PL based 1G/10G Ethernet v2019.2
 This repository contains ZCU102 design files for PS and PL based 1G/10G Ethernet.
 
 There are 6 available designs:
@@ -29,7 +29,7 @@ Each design directory contains the following general structure:
 │   ├── <design>_bd.tcl
 │   └── <design>_top.tcl
 └── Software
-    ├── SDK
+    ├── Vitis
     └── PetaLinux
 
 ````

@@ -1,4 +1,4 @@
-# PS SGMII via EMIO v2019.1
+# PS SGMII via EMIO v2019.2
 
 ## **Design Summary**
 
@@ -23,13 +23,13 @@ Enter the `Scripts` directory. From the command line run the following:
 
 The Vivado project will be built in the `Hardware` directory.
 
-### **SDK**:
+### **Vitis**:
 
-To build the Baremetal Example Applications for this project, create a new SDK project in the `Software/SDK` directory. Once created, import the hardware definition file from your Vivado export location.
+To build the Baremetal Example Applications for this project, create a new Vitis workspace in the `Software/Vitis` directory. Once created, build a new platform project targeting your exported xsa file from Vivado.
 
 You can now create a new application project. Select `File > New > New Application Project`
 
-SDK offers several Ethernet-based example application projects which leverage the LwIP Library. These can be selected on the second page of the New Application Project dialogue.
+Vitis offers several Ethernet-based example application projects which leverage the LwIP Library. These can be selected on the second page of the New Application Project dialogue.
 
 ### **PetaLinux**:
 

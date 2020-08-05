@@ -155,6 +155,11 @@ CONFIG_system-zynqmp=y
 # CONFIG_formfactor-dev is not set
 
 #
+# haveged 
+#
+CONFIG_haveged=y
+
+#
 # i2c-tools 
 #
 # CONFIG_i2c-tools is not set
@@ -1540,6 +1545,13 @@ CONFIG_run-postinsts=y
 # CONFIG_libgcrypt-dev is not set
 
 #
+# libgcc 
+#
+# CONFIG_libgcc is not set
+# CONFIG_libgcc-dbg is not set
+# CONFIG_libgcc-dev is not set
+
+#
 # libgpg-error 
 #
 # CONFIG_libgpg-error is not set
@@ -2213,6 +2225,20 @@ CONFIG_run-postinsts=y
 # CONFIG_which is not set
 # CONFIG_which-dev is not set
 # CONFIG_which-dbg is not set
+
+#
+# xrt
+#
+# CONFIG_xrt is not set
+# CONFIG_xrt-dev is not set
+# CONFIG_xrt-dbg is not set
+
+#
+# zocl
+#
+# CONFIG_zocl is not set
+# CONFIG_zocl-dev is not set
+# CONFIG_zocl-dbg is not set
 
 #
 # zlib 
@@ -3067,7 +3093,6 @@ CONFIG_packagegroup-core-ssh-dropbear=y
 # CONFIG_qtsensors-mkspecs is not set
 # CONFIG_qtsensors-plugins is not set
 # CONFIG_qtsensors-dbg is not set
-# CONFIG_qtsensors-examples-dev is not set
 # CONFIG_qtsensors-dev is not set
 
 #
@@ -3116,7 +3141,6 @@ CONFIG_packagegroup-core-ssh-dropbear=y
 #
 # CONFIG_qttranslations is not set
 # CONFIG_qttranslations-qtwebengine is not set
-# CONFIG_qttranslations-qtquick1 is not set
 # CONFIG_qttranslations-qthelp is not set
 # CONFIG_qttranslations-qtbase is not set
 # CONFIG_qttranslations-dbg is not set
@@ -3128,7 +3152,6 @@ CONFIG_packagegroup-core-ssh-dropbear=y
 # CONFIG_qttranslations-linguist is not set
 # CONFIG_qttranslations-qtserialport is not set
 # CONFIG_qttranslations-qtmultimedia is not set
-# CONFIG_qttranslations-qt is not set
 # CONFIG_qttranslations-qtconnectivity is not set
 # CONFIG_qttranslations-qtlocation is not set
 # CONFIG_qttranslations-qtxmlpatterns is not set
@@ -3857,7 +3880,6 @@ CONFIG_hellopm=y
 #
 # libpthread-stubs 
 #
-# CONFIG_libpthread-stubs is not set
 # CONFIG_libpthread-stubs-dbg is not set
 # CONFIG_libpthread-stubs-dev is not set
 
@@ -4166,6 +4188,13 @@ CONFIG_hellopm=y
 # CONFIG_packagegroup-petalinux-v4lutils-dev is not set
 
 #
+# packagegroup-petalinux-weston 
+#
+# CONFIG_packagegroup-petalinux-weston is not set
+# CONFIG_packagegroup-petalinux-weston-dbg is not set
+# CONFIG_packagegroup-petalinux-weston-dev is not set
+
+#
 # packagegroup-petalinux-x11 
 #
 # CONFIG_packagegroup-petalinux-x11 is not set
@@ -4203,3 +4232,4 @@ CONFIG_iperf3=y
 # PetaLinux RootFS Settings
 #
 CONFIG_ROOTFS_ROOT_PASSWD="root"
+CONFIG_ADD_EXTRA_USERS=""

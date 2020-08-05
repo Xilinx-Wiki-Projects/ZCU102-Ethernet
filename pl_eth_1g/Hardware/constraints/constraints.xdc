@@ -61,4 +61,3 @@ set_property PACKAGE_PIN    ah14  [get_ports rx_clk_led]
 
 ## GPIO Switches
 ### GPIO_SW_E S N W C => AE14 AE15 AG15 AF15 AG13
-
