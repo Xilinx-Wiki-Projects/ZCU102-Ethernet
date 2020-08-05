@@ -1,4 +1,4 @@
-# PL SGMII
+# PL SGMII v2019.1
 
 ## **Design Summary**
 
@@ -23,6 +23,14 @@ Enter the `Scripts` directory. From the command line run the following:
 
 The Vivado project will be built in the `Hardware` directory.
 
+### **SDK**:
+
+To build the Baremetal Example Applications for this project, create a new SDK project in the `Software/SDK` directory. Once created, import the hardware definition file from your Vivado export location.
+
+You can now create a new application project. Select `File > New > New Application Project`
+
+SDK offers several Ethernet-based example application projects which leverage the LwIP Library. These can be selected on the second page of the New Application Project dialogue.
+
 ### **PetaLinux**:
 
 Enter the `Software/PetaLinux/` directory. From the command line run the following:
@@ -41,35 +49,36 @@ Once packaged, the `BOOT.bin` and `image.ub` files (in the `PetaLinux/images/lin
 ---
 
 ## **Validation**
-
 ### **U-Boot:**
 NOTE: U-Boot validation results are not available
 
 ### **Kernel:**
 ```
 root@plnx:~# ethtool -s eth0 speed 1000 duplex full autoneg off
-root@plnx:~# [   61.441071] xilinx_axienet 80000000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
+root@plnx:~# [   38.161323] xilinx_axienet 80000000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
 
 root@plnx:~# udhcpc -i eth0
 udhcpc: started, v1.29.2
 udhcpc: sending discover
 udhcpc: sending select for 123.234.10.18
 udhcpc: lease of 123.234.10.18 obtained, lease time 600
-root@plnx:~# ping 123.234.10.1
+root@plnx:~# ping 123.234.10.1 -c 9
 PING 123.234.10.1 (123.234.10.1): 56 data bytes
-64 bytes from 123.234.10.1: seq=0 ttl=64 time=0.397 ms
-64 bytes from 123.234.10.1: seq=1 ttl=64 time=0.202 ms
-64 bytes from 123.234.10.1: seq=2 ttl=64 time=0.118 ms
-64 bytes from 123.234.10.1: seq=3 ttl=64 time=0.136 ms
-64 bytes from 123.234.10.1: seq=4 ttl=64 time=0.143 ms
-64 bytes from 123.234.10.1: seq=5 ttl=64 time=0.138 ms
-^V64 bytes from 123.234.10.1: seq=6 ttl=64 time=0.167 ms
-64 bytes from 123.234.10.1: seq=7 ttl=64 time=0.167 ms
-^C
+64 bytes from 123.234.10.1: seq=0 ttl=64 time=0.374 ms
+64 bytes from 123.234.10.1: seq=1 ttl=64 time=0.236 ms
+64 bytes from 123.234.10.1: seq=2 ttl=64 time=0.167 ms
+64 bytes from 123.234.10.1: seq=3 ttl=64 time=0.150 ms
+64 bytes from 123.234.10.1: seq=4 ttl=64 time=0.235 ms
+64 bytes from 123.234.10.1: seq=5 ttl=64 time=0.191 ms
+64 bytes from 123.234.10.1: seq=6 ttl=64 time=0.265 ms
+64 bytes from 123.234.10.1: seq=7 ttl=64 time=0.201 ms
+64 bytes from 123.234.10.1: seq=8 ttl=64 time=0.127 ms
+
 --- 123.234.10.1 ping statistics ---
-8 packets transmitted, 8 packets received, 0% packet loss
-round-trip min/avg/max = 0.118/0.183/0.397 ms
+9 packets transmitted, 9 packets received, 0% packet loss
+round-trip min/avg/max = 0.127/0.216/0.374 ms
 root@plnx:~#
+
 ```
 ---
 

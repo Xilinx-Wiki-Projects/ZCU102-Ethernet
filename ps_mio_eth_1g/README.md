@@ -1,4 +1,4 @@
-# PS 10/100/1000BASE-T via MIO
+# PS 10/100/1000BASE-T via MIO v2019.1
 
 ## **Design Summary**
 
@@ -19,6 +19,14 @@ Enter the `Scripts` directory. From the command line run the following:
 `vivado -source *top.tcl`
 
 The Vivado project will be built in the `Hardware` directory.
+
+### **SDK**:
+
+To build the Baremetal Example Applications for this project, create a new SDK project in the `Software/SDK` directory. Once created, import the hardware definition file from your Vivado export location.
+
+You can now create a new application project. Select `File > New > New Application Project`
+
+SDK offers several Ethernet-based example application projects which leverage the LwIP Library. These can be selected on the second page of the New Application Project dialogue.
 
 ### **PetaLinux**:
 

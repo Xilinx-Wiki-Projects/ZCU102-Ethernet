@@ -1,4 +1,4 @@
-# PL 10GBASE-R
+# PL 10GBASE-R v2019.1
 
 ## **Design Summary**
 
@@ -26,6 +26,10 @@ Enter the `Scripts` directory. From the command line run the following:
 `vivado -source *top.tcl`
 
 The Vivado project will be built in the `Hardware` directory.
+
+### **SDK**:
+
+There is currently no baremetal SDK support for the 10G/25G IP.
 
 ### **PetaLinux**:
 
