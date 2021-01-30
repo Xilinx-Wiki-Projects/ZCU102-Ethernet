@@ -1,0 +1,3 @@
+CONFIG_iperf3
+CONFIG_ethtool
+CONFIG_phytool
