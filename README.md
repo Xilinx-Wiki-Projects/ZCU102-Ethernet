@@ -11,7 +11,7 @@ There are 6 available designs:
 
 - **ps_emio_eth_1g** - PS 1000BASE-X design utilizing the GEM over EMIO to a 1G/2.5G Ethernet PCS/PMA or SGMII IP.
 
-- **ps_emio_eth_1g** - PS SGMII design utilizing the GEM over EMIO to a 1G/2.5G Ethernet PCS/PMA or SGMII IP.
+- **ps_emio_eth_sgmii** - PS SGMII design utilizing the GEM over EMIO to a 1G/2.5G Ethernet PCS/PMA or SGMII IP.
 
 - **ps_mio_eth_1g** - PS 10/100/1000BASE-T design utilizing the GEM over MIO to the TI DP83867 PHY onboard the ZCU102.
 ---
