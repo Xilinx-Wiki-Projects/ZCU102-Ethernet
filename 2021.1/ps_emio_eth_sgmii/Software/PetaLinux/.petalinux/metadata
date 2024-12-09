@@ -1,0 +1,6 @@
+PETALINUX_VER=2021.1
+VALIDATE_HW_CHKSUM=1
+HARDWARE_PATH=/group/techsup/ajayad/new_version/ZCU102-Ethernet/2021.1/ps_emio_eth_sgmii/Hardware/pre-built/ps_emio_eth_sgmii_wrapper.xsa
+HARDWARE_CHECKSUM=6c1df26930718e8a6d837bbfc2918368
+YOCTO_SDK=b4cf886365639d226f0cd8f175d6238a
+RFSCONFIG_CHKSUM=19b87156c94fac8a3aa610e14ce0ea51
