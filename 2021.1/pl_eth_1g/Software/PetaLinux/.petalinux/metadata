@@ -1,0 +1,6 @@
+PETALINUX_VER=2021.1
+VALIDATE_HW_CHKSUM=1
+HARDWARE_PATH=/group/techsup/ajayad/new_version/ZCU102-Ethernet/2021.1/pl_eth_1g/Hardware/pre-built/pl_eth_1g_wrapper.xsa
+HARDWARE_CHECKSUM=d9d1291c3bf46e7553672c52f7c9daba
+YOCTO_SDK=b4cf886365639d226f0cd8f175d6238a
+RFSCONFIG_CHKSUM=19b87156c94fac8a3aa610e14ce0ea51
