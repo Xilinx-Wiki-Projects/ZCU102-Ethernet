@@ -1,0 +1,6 @@
+PETALINUX_VER=2021.2
+VALIDATE_HW_CHKSUM=1
+HARDWARE_PATH=/group/techsup/ajayad/new_version/ZCU102-Ethernet/2021.2/ps_mio_eth_1g/Hardware/pre-built/ps_mio_eth_1g_wrapper.xsa
+HARDWARE_CHECKSUM=e60cdfebc52aa737c683a4dc060c1180
+YOCTO_SDK=895fbcce2f0a15ac1ff1fbc579359da1
+RFSCONFIG_CHKSUM=7fdb1b453b814b2567de12860bfd3d00
