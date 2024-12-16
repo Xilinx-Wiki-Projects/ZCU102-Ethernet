@@ -1,0 +1,27 @@
+/include/ "system-conf.dtsi"
+/ {
+};
+
+&i2c1 {
+    status = "okay";
+    clock-frequency = <400000>;
+    i2c-mux@74 { /* u34 */
+        compatible = "nxp,pca9548";
+        #address-cells = <1>;
+        #size-cells = <0>;
+        reg = <0x74>;
+        i2c@3 { /* i2c mw 74 0 8 */
+            #address-cells = <1>;
+            #size-cells = <0>;
+            reg = <3>;
+            si570_2: clock-generator@5d {
+                #clock-cells = <0>;
+                compatible = "silabs,si570";
+                reg = <0x5d>;
+                temperature-stability = <50>;
+                factory-fout = <156250000>;
+                clock-frequency = <156250000>;
+            };
+        };
+    };
+};
