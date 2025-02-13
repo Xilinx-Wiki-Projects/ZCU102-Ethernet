@@ -1,0 +1,7 @@
+PETALINUX_VER=2022.2
+VALIDATE_HW_CHKSUM=1
+HARDWARE_PATH=/group/techsup/ajayad/GitHubRepo/ZCU102-Ethernet/2022.2/pl_eth_10g/Hardware/pre-built/pl_eth_10g_wrapper.xsa
+HDF_EXT=xsa
+HARDWARE_CHECKSUM=03c7c995ccfef5988d6cf2d659ef3b5b
+YOCTO_SDK=4ade5db6317c61f6cb657b7a919dfa25
+RFSCONFIG_CHKSUM=25b04e8a6167d7c35cfe8bc5264abfa2

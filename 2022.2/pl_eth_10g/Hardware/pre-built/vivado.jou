@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Wed Feb 28 11:53:05 2024
+# Process ID: 38787
+# Current directory: /group/techsup/ajayad/new_version/ZCU102-Ethernet/2021.2/pl_eth_10g/Hardware/pre-built
+# Command line: vivado
+# Log file: /group/techsup/ajayad/new_version/ZCU102-Ethernet/2021.2/pl_eth_10g/Hardware/pre-built/vivado.log
+# Journal file: /group/techsup/ajayad/new_version/ZCU102-Ethernet/2021.2/pl_eth_10g/Hardware/pre-built/vivado.jou
+# Running On: xsjapps57, OS: Linux, CPU Frequency: 1197.445 MHz, CPU Physical cores: 20, Host memory: 540987 MB
+#-----------------------------------------------------------
+start_gui
+open_project /group/techsup/ajayad/new_version/ZCU102-Ethernet/2021.2/pl_eth_10g/Hardware/pl_eth_10g_hw/pl_eth_10g.xpr
+report_ip_status -name ip_status 
+update_compile_order -fileset sources_1
+upgrade_ip [get_ips  {pl_eth_10g_axi_dma_0_0 pl_eth_10g_tx_data_fifo_0 pl_eth_10g_ps_axi_periph_0 pl_eth_10g_xxv_ethernet_0_0 pl_eth_10g_axi_pl_ps_0 pl_eth_10g_rx_data_fifo_0 pl_eth_10g_zynq_ultra_ps_e_0_0}] -log ip_upgrade.log
+export_ip_user_files -of_objects [get_ips {pl_eth_10g_axi_dma_0_0 pl_eth_10g_tx_data_fifo_0 pl_eth_10g_ps_axi_periph_0 pl_eth_10g_xxv_ethernet_0_0 pl_eth_10g_axi_pl_ps_0 pl_eth_10g_rx_data_fifo_0 pl_eth_10g_zynq_ultra_ps_e_0_0}] -no_script -sync -force -quiet
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 38
+wait_on_run impl_1
+write_hw_platform -fixed -include_bit -force -file /group/techsup/ajayad/new_version/ZCU102-Ethernet/2021.2/pl_eth_10g/Hardware/pre-built/pl_eth_10g_wrapper.xsa
+write_bd_tcl /group/techsup/ajayad/new_version/ZCU102-Ethernet/2021.2/pl_eth_10g/Scripts/project_bd.tcl
+write_bd_tcl /group/techsup/ajayad/new_version/ZCU102-Ethernet/2021.2/pl_eth_10g/Scripts/project_bd.tcl -force
