@@ -1,0 +1,20 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:04:56 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Mon Apr 29 13:52:09 2024
+# Process ID: 702484
+# Current directory: /group/techsup/ajayad/new_version/ZCU102-Ethernet/2023.1/pl_eth_10g/Hardware
+# Command line: vivado
+# Log file: /group/techsup/ajayad/new_version/ZCU102-Ethernet/2023.1/pl_eth_10g/Hardware/vivado.log
+# Journal file: /group/techsup/ajayad/new_version/ZCU102-Ethernet/2023.1/pl_eth_10g/Hardware/vivado.jou
+# Running On: xsjapps57, OS: Linux, CPU Frequency: 1197.419 MHz, CPU Physical cores: 20, Host memory: 540964 MB
+#-----------------------------------------------------------
+start_gui
+open_project /group/techsup/ajayad/new_version/ZCU102-Ethernet/2023.1/pl_eth_10g/Hardware/pl_eth_10g_hw/pl_eth_10g.xpr
+update_compile_order -fileset sources_1
+open_project /group/techsup/ajayad/new_version/ZCU102-Ethernet/2023.1/pl_eth_1g/Hardware/pl_eth_1g_hw/pl_eth_1g.xpr
+update_compile_order -fileset sources_1
+close_project
+write_hw_platform -fixed -include_bit -force -file /group/techsup/ajayad/new_version/ZCU102-Ethernet/2023.1/pl_eth_10g/Hardware/pre-built/pl_eth_10g_wrapper.xsa
