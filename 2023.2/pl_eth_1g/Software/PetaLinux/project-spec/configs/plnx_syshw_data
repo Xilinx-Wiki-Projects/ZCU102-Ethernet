@@ -1,0 +1,227 @@
+device_id: xczu9eg
+hw_design_name: pl_eth_1g_wrapper
+processor:
+    psu_cortexa53_0:
+        arch: aarch64
+        ip_name: psu_cortexa53
+        slaves_strings: axi_eth_0 axi_eth_0_dma other_perph_axi_timer_1 psu_acpu_gic psu_adma_0 psu_adma_1 psu_adma_2 psu_adma_3 psu_adma_4 psu_adma_5 psu_adma_6 psu_adma_7 psu_afi_0 psu_afi_1 psu_afi_2 psu_afi_3 psu_afi_4 psu_afi_5 psu_afi_6 psu_ams psu_apm_0 psu_apm_1 psu_apm_2 psu_apm_5 psu_apu psu_can_1 psu_cci_gpv psu_cci_reg psu_coresight_0 psu_crf_apb psu_crl_apb psu_csu_0 psu_csudma psu_ctrl_ipi psu_ddr_0 psu_ddr_1 psu_ddr_phy psu_ddr_qos_ctrl psu_ddr_xmpu0_cfg psu_ddr_xmpu1_cfg psu_ddr_xmpu2_cfg psu_ddr_xmpu3_cfg psu_ddr_xmpu4_cfg psu_ddr_xmpu5_cfg psu_ddrc_0 psu_efuse psu_fpd_gpv psu_fpd_slcr psu_fpd_slcr_secure psu_fpd_xmpu_cfg psu_fpd_xmpu_sink psu_gdma_0 psu_gdma_1 psu_gdma_2 psu_gdma_3 psu_gdma_4 psu_gdma_5 psu_gdma_6 psu_gdma_7 psu_gpio_0 psu_gpu psu_i2c_0 psu_i2c_1 psu_iou_scntr psu_iou_scntrs psu_iousecure_slcr psu_iouslcr_0 psu_ipi_0 psu_lpd_slcr psu_lpd_slcr_secure psu_lpd_xppu psu_lpd_xppu_sink psu_mbistjtag psu_message_buffers psu_ocm psu_ocm_ram_0 psu_ocm_xmpu_cfg psu_pmu_global_0 psu_r5_0_atcm_global psu_r5_0_btcm_global psu_r5_1_atcm_global psu_r5_1_btcm_global psu_r5_tcm_ram_global psu_rcpu_gic psu_rpu psu_rsa psu_rtc psu_sd_1 psu_serdes psu_siou psu_smmu_gpv psu_smmu_reg psu_ttc_0 psu_ttc_1 psu_ttc_2 psu_ttc_3 psu_uart_0 psu_uart_1 psu_wdt_0 psu_wdt_1
+        slaves:
+            psu_ddr_0_bankless:
+                device_type: memory
+                ip_name: psu_ddr
+                baseaddr: 0x0
+                highaddr: 0x7FFFFFFF
+            psu_ddr_1_bankless:
+                device_type: memory
+                ip_name: psu_ddr
+                baseaddr: 0x800000000
+                highaddr: 0x87FFFFFFF
+            psu_uart_1:
+                device_type: serial
+                ip_name: psu_uart
+                baseaddr: 0xFF010000
+            psu_uart_0:
+                device_type: serial
+                ip_name: psu_uart
+                baseaddr: 0xFF000000
+            axi_eth_0:
+                device_type: ethernet
+                ip_name: axi_ethernet
+            psu_sd_1:
+                device_type: sd
+                ip_name: psu_sd
+            psu_rtc:
+                device_type: rtc
+                ip_name: psu_rtc
+            psu_i2c_1:
+                device_type: i2c
+                ip_name: psu_i2c
+            psu_i2c_0:
+                device_type: i2c
+                ip_name: psu_i2c
+            axi_eth_0_dma:
+                ip_name: axi_dma
+            other_perph_axi_timer_1:
+                ip_name: axi_timer
+            psu_acpu_gic:
+                ip_name: psu_acpu_gic
+            psu_adma_0:
+                ip_name: psu_adma
+            psu_adma_1:
+                ip_name: psu_adma
+            psu_adma_2:
+                ip_name: psu_adma
+            psu_adma_3:
+                ip_name: psu_adma
+            psu_adma_4:
+                ip_name: psu_adma
+            psu_adma_5:
+                ip_name: psu_adma
+            psu_adma_6:
+                ip_name: psu_adma
+            psu_adma_7:
+                ip_name: psu_adma
+            psu_afi_0:
+                ip_name: psu_afi
+            psu_afi_1:
+                ip_name: psu_afi
+            psu_afi_2:
+                ip_name: psu_afi
+            psu_afi_3:
+                ip_name: psu_afi
+            psu_afi_4:
+                ip_name: psu_afi
+            psu_afi_5:
+                ip_name: psu_afi
+            psu_afi_6:
+                ip_name: psu_afi
+            psu_ams:
+                ip_name: psu_ams
+            psu_apm_0:
+                ip_name: psu_apm
+            psu_apm_1:
+                ip_name: psu_apm
+            psu_apm_2:
+                ip_name: psu_apm
+            psu_apm_5:
+                ip_name: psu_apm
+            psu_apu:
+                ip_name: psu_apu
+            psu_can_1:
+                ip_name: psu_can
+            psu_cci_gpv:
+                ip_name: psu_cci_gpv
+            psu_cci_reg:
+                ip_name: psu_cci_reg
+            psu_coresight_0:
+                ip_name: psu_coresight_0
+            psu_crf_apb:
+                ip_name: psu_crf_apb
+            psu_crl_apb:
+                ip_name: psu_crl_apb
+            psu_csu_0:
+                ip_name: psu_csu
+            psu_csudma:
+                ip_name: psu_csudma
+            psu_ctrl_ipi:
+                ip_name: PERIPHERAL
+            psu_ddr_0:
+                ip_name: psu_ddr
+            psu_ddr_1:
+                ip_name: psu_ddr
+            psu_ddr_phy:
+                ip_name: psu_ddr_phy
+            psu_ddr_qos_ctrl:
+                ip_name: psu_ddr_qos_ctrl
+            psu_ddr_xmpu0_cfg:
+                ip_name: psu_ddr_xmpu0_cfg
+            psu_ddr_xmpu1_cfg:
+                ip_name: psu_ddr_xmpu1_cfg
+            psu_ddr_xmpu2_cfg:
+                ip_name: psu_ddr_xmpu2_cfg
+            psu_ddr_xmpu3_cfg:
+                ip_name: psu_ddr_xmpu3_cfg
+            psu_ddr_xmpu4_cfg:
+                ip_name: psu_ddr_xmpu4_cfg
+            psu_ddr_xmpu5_cfg:
+                ip_name: psu_ddr_xmpu5_cfg
+            psu_ddrc_0:
+                ip_name: psu_ddrc
+            psu_efuse:
+                ip_name: psu_efuse
+            psu_fpd_gpv:
+                ip_name: psu_fpd_gpv
+            psu_fpd_slcr:
+                ip_name: psu_fpd_slcr
+            psu_fpd_slcr_secure:
+                ip_name: psu_fpd_slcr_secure
+            psu_fpd_xmpu_cfg:
+                ip_name: psu_fpd_xmpu_cfg
+            psu_fpd_xmpu_sink:
+                ip_name: psu_fpd_xmpu_sink
+            psu_gdma_0:
+                ip_name: psu_gdma
+            psu_gdma_1:
+                ip_name: psu_gdma
+            psu_gdma_2:
+                ip_name: psu_gdma
+            psu_gdma_3:
+                ip_name: psu_gdma
+            psu_gdma_4:
+                ip_name: psu_gdma
+            psu_gdma_5:
+                ip_name: psu_gdma
+            psu_gdma_6:
+                ip_name: psu_gdma
+            psu_gdma_7:
+                ip_name: psu_gdma
+            psu_gpio_0:
+                ip_name: psu_gpio
+            psu_gpu:
+                ip_name: psu_gpu
+            psu_iou_scntr:
+                ip_name: psu_iou_scntr
+            psu_iou_scntrs:
+                ip_name: psu_iou_scntrs
+            psu_iousecure_slcr:
+                ip_name: psu_iousecure_slcr
+            psu_iouslcr_0:
+                ip_name: psu_iouslcr
+            psu_ipi_0:
+                ip_name: psu_ipi
+            psu_lpd_slcr:
+                ip_name: psu_lpd_slcr
+            psu_lpd_slcr_secure:
+                ip_name: psu_lpd_slcr_secure
+            psu_lpd_xppu:
+                ip_name: psu_lpd_xppu
+            psu_lpd_xppu_sink:
+                ip_name: psu_lpd_xppu_sink
+            psu_mbistjtag:
+                ip_name: psu_mbistjtag
+            psu_message_buffers:
+                ip_name: PERIPHERAL
+            psu_ocm:
+                ip_name: psu_ocm
+            psu_ocm_ram_0:
+                ip_name: psu_ocm_ram_0
+            psu_ocm_xmpu_cfg:
+                ip_name: psu_ocm_xmpu_cfg
+            psu_pmu_global_0:
+                ip_name: psu_pmu_global_0
+            psu_r5_0_atcm_global:
+                ip_name: psu_r5_0_atcm_global
+            psu_r5_0_btcm_global:
+                ip_name: psu_r5_0_btcm_global
+            psu_r5_1_atcm_global:
+                ip_name: psu_r5_1_atcm_global
+            psu_r5_1_btcm_global:
+                ip_name: psu_r5_1_btcm_global
+            psu_r5_tcm_ram_global:
+                ip_name: psu_r5_tcm_ram
+            psu_rcpu_gic:
+                ip_name: psu_rcpu_gic
+            psu_rpu:
+                ip_name: psu_rpu
+            psu_rsa:
+                ip_name: psu_rsa
+            psu_serdes:
+                ip_name: psu_serdes
+            psu_siou:
+                ip_name: psu_siou
+            psu_smmu_gpv:
+                ip_name: psu_smmu_gpv
+            psu_smmu_reg:
+                ip_name: psu_smmu_reg
+            psu_ttc_0:
+                ip_name: psu_ttc
+            psu_ttc_1:
+                ip_name: psu_ttc
+            psu_ttc_2:
+                ip_name: psu_ttc
+            psu_ttc_3:
+                ip_name: psu_ttc
+            psu_wdt_0:
+                ip_name: psu_wdt
+            psu_wdt_1:
+                ip_name: psu_wdt
