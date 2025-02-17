@@ -1,0 +1,6 @@
+[Crash Reporter] Started with processId = 3690640, at dir = '/group/techsup/ajayad/GitEnterpriseRepo/ZCU102-Ethernet/2024.1/ps_emio_eth_sgmii/Scripts', at time = Fri Feb 14 16:42:21 2025
+[Crash Reporter] Created Process registration file in crash store: /group/techsup/ajayad/GitEnterpriseRepo/ZCU102-Ethernet/2024.1/ps_emio_eth_sgmii/Scripts/.crashReporter/xsjapps57_1739580138_3690306/crashStore/processRegFile.txt
+[Crash Reporter] New process registration successfull for <hostname>:<pid> = xsjapps57:3690554
+[Crash Reporter] Crash Reporter exit condition met. No registered process is running and No pending crash report transmission.
+[Crash Reporter] Deleted crash store.
+[Crash Reporter] Exiting at Fri Feb 14 16:46:13 2025
