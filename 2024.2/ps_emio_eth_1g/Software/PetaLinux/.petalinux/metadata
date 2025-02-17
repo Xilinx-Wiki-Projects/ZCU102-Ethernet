@@ -1,0 +1,5 @@
+PETALINUX_VER=2024.2
+HARDWARE_PATH=/group/techsup/ajayad/GitEnterpriseRepo/ZCU102-Ethernet/2024.2/ps_emio_eth_1g/Hardware/pre-built/ps_emio_eth_1g_wrapper.xsa
+HDF_EXT=xsa
+VALIDATE_HW_CHKSUM=1
+YOCTO_SDK=acd7a0f018c9dcc73b41b34a82c0553ac0e000c958631fb36f26d497824ff35d
