@@ -1,6 +1,0 @@
-[Crash Reporter] Started with processId = 702522, at dir = '/group/techsup/ajayad/new_version/ZCU102-Ethernet/2023.1/pl_eth_10g/Hardware', at time = Mon Apr 29 13:52:08 2024
-[Crash Reporter] Created Process registration file in crash store: /group/techsup/ajayad/new_version/ZCU102-Ethernet/2023.1/pl_eth_10g/Hardware/.crashReporter/xsjapps57_1714423925_702439/crashStore/processRegFile.txt
-[Crash Reporter] New process registration successfull for <hostname>:<pid> = xsjapps57:702484
-[Crash Reporter] Crash Reporter exit condition met. No registered process is running and No pending crash report transmission.
-[Crash Reporter] Deleted crash store.
-[Crash Reporter] Exiting at Mon Apr 29 15:00:28 2024
