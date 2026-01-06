@@ -14,6 +14,63 @@ There are 6 available designs:
 - **ps_emio_eth_sgmii** - PS SGMII design utilizing the GEM over EMIO to a 1G/2.5G Ethernet PCS/PMA or SGMII IP.
 
 - **ps_mio_eth_1g** - PS 10/100/1000BASE-T design utilizing the GEM over MIO to the TI DP83867 PHY onboard the ZCU102.
+
+---
+## **Getting Started**
+
+### Cloning the Repository
+
+To get started with these designs, clone this repository to your local machine:
+
+```bash
+git clone https://github.com/Xilinx-Wiki-Projects/ZCU102-Ethernet.git
+cd ZCU102-Ethernet
+```
+
+### Working with Tagged Versions
+
+This repository uses a rolling release model with tagged commits for version management. Each Xilinx tool version is marked with Start of Life (SOL) and End of Life (EOL) tags.
+
+#### Viewing Available Tags
+
+To see all available tagged versions:
+
+```bash
+git tag -l
+```
+
+This will display tags such as `xilinx-v2023.1-SOL`, `xilinx-v2023.2-SOL`, `xilinx-v2024.1-SOL`, etc.
+
+#### Checking Out a Specific Version
+
+To work with a specific version, checkout the corresponding SOL tag:
+
+```bash
+# Checkout a specific version (e.g., 2024.1)
+git checkout xilinx-v2024.1-SOL
+```
+
+Or to checkout the latest EOL tag for a version that has reached end of life:
+
+```bash
+# Checkout the final state of a version before removal
+git checkout xilinx-v2023.1-EOL
+```
+
+#### Returning to the Latest Version
+
+To return to the latest version on the main branch:
+
+```bash
+git checkout main
+```
+
+**Note:** After checking out a tag, you'll be in a "detached HEAD" state. This is normal and allows you to explore that version. If you need to make changes, create a new branch from the tag:
+
+```bash
+git checkout -b my-branch-name xilinx-v2024.1-SOL
+```
+
 ---
 ## **What to Expect**
 When a new version is added that commit is tagged with SOL (Start of Life)
