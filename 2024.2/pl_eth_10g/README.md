@@ -198,14 +198,6 @@ As a workaround, the `stat_rx_status` signal can be tied to a GPIO and polled in
 
 For more details, see: https://adaptivesupport.amd.com/s/article/000037700?language=en_US
 
-### XXV Ethernet Block Lock Register Kernel Crash
-
-In 2024.1 and later Linux driver versions, a kernel crash with synchronous abort may occur in XXV Ethernet designs when the link partner is down or unstable. The block lock register becomes inaccessible when the clock is unstable, and the driver's continuous polling of this register (required for phylink framework support) results in a crash. 
-
-As a workaround, the `stat_rx_status` signal can be tied to a GPIO and polled in software to verify link stability before accessing the block lock register.
-
-For more details, see: https://adaptivesupport.amd.com/s/article/000037700?language=en_US
-
 ---
 
 ---
