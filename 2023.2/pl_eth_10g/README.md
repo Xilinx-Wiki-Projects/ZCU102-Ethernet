@@ -163,6 +163,32 @@ root@plnx:~#
 ---
 
 ## **Known Issues**
+You might encounter the following error:
+```
+[  327.828222] xilinx_axienet a0040000.ethernet eth1: XXV MAC GT reset not complete! Cross-check the MAC ref clock configuration
+```
+In such case as suggested in the [forum](https://adaptivesupport.amd.com/s/question/0D54U00007SLmCTSA1/xxv-mac-block-lock-not-complete-crosscheck-the-mac-ref-clock-configuration?language=en_US), one can connect QPLL reset to the GPIO and toggle it to get link up. In this provided design, we have connected AXI GPIO with address 0xa0010000. 
+
+```
+PetaLinux:/home/petalinux# ifconfig eth1 up
+[  327.818152] xilinx_axienet a0040000.ethernet eth1: __axienet_device_reset: DMA reset timeout!
+[  327.828222] xilinx_axienet a0040000.ethernet eth1: XXV MAC GT reset not complete! Cross-check the MAC ref clock configuration
+[  327.839985] xilinx_axienet a0040000.ethernet: axienet_device_reset failed
+ifconfig: SIOCSIFFLAGS: Connection timed out
+PetaLinux:/home/petalinux# devmem 0xa0010000
+0x00000000
+PetaLinux:/home/petalinux# devmem 0xa0010000 32 0xf
+PetaLinux:/home/petalinux# devmem 0xa0010000 32 0x0
+PetaLinux:/home/petalinux# ifconfig eth1 up
+PetaLinux:/home/petalinux# ifconfig eth1
+eth1      Link encap:Ethernet  HWaddr 00:0A:35:00:00:01
+          inet6 addr: fe80::20a:35ff:fe00:1/64 Scope:Link
+          UP BROADCAST RUNNING  MTU:1500  Metric:1
+          RX packets:7 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:7 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:838 (838.0 B)  TX bytes:838 (838.0 B)
+```
 
 ### XXV Ethernet Block Lock Register Kernel Crash
 
